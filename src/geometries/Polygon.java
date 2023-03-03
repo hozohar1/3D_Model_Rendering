@@ -10,7 +10,7 @@ import primitives.Vector;
 /** Polygon class represents two-dimensional polygon in 3D Cartesian coordinate
  * system
  * @author Dan */
-public class Polygon extends Geometry {
+public class Polygon implements Geometry {
     /** List of polygon's vertices */
     protected final List<Point> vertices;
     /** Associated plane in which the polygon lays */
@@ -46,10 +46,10 @@ public class Polygon extends Geometry {
         // Generate the plane according to the first three vertices and associate the
         // polygon with this plane.
         // The plane holds the invariant normal (orthogonal unit) vector to the polygon
-        plane         = new Plane(vertices[0], vertices[1], vertices[2]);
+        plane= new Plane(vertices[0], vertices[1], vertices[2]);
         if (size == 3) return; // no need for more tests for a Triangle
 
-        Vector  n        = plane.getNormal();
+        Vector  n= plane.getNormal();
         // Subtracting any subsequent points will throw an IllegalArgumentException
         // because of Zero Vector if they are in the same point
         Vector  edge1    = vertices[vertices.length - 1].subtract(vertices[vertices.length - 2]);
