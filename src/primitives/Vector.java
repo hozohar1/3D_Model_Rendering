@@ -127,7 +127,6 @@ public class Vector extends Point{
 return this.xyz.d1*this.xyz.d1+this.xyz.d2*this.xyz.d2+this.xyz.d3*this.xyz.d3;
     }
     /**
-
      Computes the length of this vector.
      @return the length of this vector.
      */
