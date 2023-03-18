@@ -150,7 +150,6 @@ return Math.sqrt(lengthSquared());
         return new Vector(this.xyz.d1 / this.length(), this.xyz.d2 / this.length(), this.xyz.d3 / this.length());
     }
     /**
-
      Computes the dot product of this vector with another vector.
      @param v the vector to compute the dot product with.
      @return the dot product of this vector with v.
