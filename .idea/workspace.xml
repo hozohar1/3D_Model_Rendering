@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e26e8a0f-60e9-4047-bcea-bb7707a3f8d6" name="Changes" comment="Initial ac ll">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISE5783_9287_4780.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Double3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Util.java" beforeDir="false" />
+    <list default="true" id="e26e8a0f-60e9-4047-bcea-bb7707a3f8d6" name="Changes" comment="delete line">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Cylinder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Geometry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Plane.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Polygon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/RadialGeometry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Sphere.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Triangle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Tube.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/primitives/Double3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/primitives/Point.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/primitives/Ray.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/primitives/Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/primitives/Vector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/test/Main.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +84,7 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.Main" />
       <module name="ISE5783_9287_4780" />
       <extension name="coverage">
@@ -90,11 +97,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -168,7 +170,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1679164930677</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL‎-00009" summary="delete line">
+      <created>1679168017057</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL‎-00009" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1679168017057</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +202,8 @@
     <MESSAGE value="Initial ac הה" />
     <MESSAGE value="Initial ac hh" />
     <MESSAGE value="Initial ac ll" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial ac ll" />
+    <MESSAGE value="delete line" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete line" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
