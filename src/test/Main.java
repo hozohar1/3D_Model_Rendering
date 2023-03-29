@@ -4,7 +4,8 @@ import primitives.*;
 
 import static java.lang.System.out;
 import static primitives.Util.*;
-
+// hodaya zohar 325484780 hozohar325@gmail.com
+//shoham shervi  212829287  shohamshervi@gmail.com
 /** Test program for the 1st stage
  * @author Dan Zilberstein */
 public final class Main {

@@ -7,7 +7,7 @@ package primitives;
 public class Ray {
 
     // The origin point of the ray.
-    private Point p0;
+   final private Point p0;
     // The direction vector of the ray.
    private Vector dir;
 

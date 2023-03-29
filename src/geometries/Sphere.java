@@ -11,8 +11,8 @@ public class Sphere extends RadialGeometry {
 
      The center point represents the center of the sphere.
      */
-    private Point center;
-    private double radius;
+   final private Point center;
+
     /**
 
      Creates a new Sphere object with the specified radius and center point.
