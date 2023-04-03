@@ -7,7 +7,8 @@ import primitives.Vector;
 import static org.junit.jupiter.api.Assertions.*;
 import static primitives.Util.isZero;
 
-class PolygonTests {
+class PolygonTests
+{
     /** Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}. */
     @Test
     public void testConstructor() {
