@@ -44,6 +44,8 @@ public class Plane implements Geometry {
      * @param a A point on the plane.
      * @param b A point on the plane.
      * @param c A point on the plane.
+     *           * @throws IllegalArgumentException when the points are on the same line
+     *
      */
     public Plane(Point a, Point b, Point c) {
         Vector v1 = b.subtract(a);
