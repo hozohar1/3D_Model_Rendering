@@ -64,7 +64,9 @@ public class Polygon implements Geometry {
         // the normal. If all the rest consequent edges will generate the same sign -
         // the
         // polygon is convex ("kamur" in Hebrew).
-        boolean positive = edge1.crossProduct(edge2).dotProduct(n) > 0;
+        boolean positive;
+        if (edge1.crossProduct(edge2).dotProduct(n) > 0) positive = true;
+        else positive = false;
         for (var i = 1; i < vertices.length; ++i) {
             // Test that the point is in the same plane as calculated originally
             if (!isZero(vertices[i].subtract(vertices[0]).dotProduct(n)))

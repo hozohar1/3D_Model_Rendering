@@ -7,7 +7,7 @@ package primitives;
 
 public class Point {
     /** The coordinates of the point. */
-    protected final Double3  xyz;
+   final Double3  xyz;
 
     /**
      * Constructs a new point with the specified coordinates.
@@ -103,7 +103,7 @@ this.xyz=d;
      */
     public double distanceSquared(Point p)
     {
-        return (this.xyz.d1-p.xyz.d1* this.xyz.d1-p.xyz.d1+ this.xyz.d2-p.xyz.d2* this.xyz.d2-p.xyz.d2+ this.xyz.d3-p.xyz.d3* this.xyz.d3-p.xyz.d3);
+        return (((this.xyz.d1-p.xyz.d1)* (this.xyz.d1-p.xyz.d1))+ ((this.xyz.d2-p.xyz.d2)* (this.xyz.d2-p.xyz.d2))+ ((this.xyz.d3-p.xyz.d3)*( this.xyz.d3-p.xyz.d3)));
 
     }
 }
