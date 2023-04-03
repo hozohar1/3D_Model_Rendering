@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e26e8a0f-60e9-4047-bcea-bb7707a3f8d6" name="Changes" comment="///names">
+    <list default="true" id="e26e8a0f-60e9-4047-bcea-bb7707a3f8d6" name="Changes" comment="///nothing">
+      <change afterPath="$PROJECT_DIR$/unitTests/geometries/PlaneTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/geometries/SphereTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/geometries/TubeTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Plane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Plane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Sphere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Sphere.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -89,7 +95,7 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.PolygonTests">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.Main" />
       <module name="ISE5783_9287_4780" />
@@ -103,48 +109,48 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PointTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlaneTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9287_4780" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="primitives.*" />
+          <option name="PATTERN" value="geometries.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="primitives" />
-      <option name="MAIN_CLASS_NAME" value="primitives.PointTests" />
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.PlaneTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PointTests.testAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlaneTests.testConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9287_4780" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="primitives.*" />
+          <option name="PATTERN" value="geometries.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="primitives" />
-      <option name="MAIN_CLASS_NAME" value="primitives.PointTests" />
-      <option name="METHOD_NAME" value="testAdd" />
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.PlaneTests" />
+      <option name="METHOD_NAME" value="testConstructor" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PointTests.testSubtract" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlaneTests.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9287_4780" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="primitives.*" />
+          <option name="PATTERN" value="geometries.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="primitives" />
-      <option name="MAIN_CLASS_NAME" value="primitives.PointTests" />
-      <option name="METHOD_NAME" value="testSubtract" />
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.PlaneTests" />
+      <option name="METHOD_NAME" value="testGetNormal" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -165,17 +171,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VectorTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SphereTests.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9287_4780" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="primitives.*" />
+          <option name="PATTERN" value="geometries.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="primitives" />
-      <option name="MAIN_CLASS_NAME" value="primitives.VectorTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.SphereTests" />
+      <option name="METHOD_NAME" value="testGetNormal" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -183,10 +190,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.PolygonTests" />
-        <item itemvalue="JUnit.VectorTests" />
-        <item itemvalue="JUnit.PointTests" />
-        <item itemvalue="JUnit.PointTests.testSubtract" />
-        <item itemvalue="JUnit.PointTests.testAdd" />
+        <item itemvalue="JUnit.SphereTests.testGetNormal" />
+        <item itemvalue="JUnit.PlaneTests" />
+        <item itemvalue="JUnit.PlaneTests.testGetNormal" />
+        <item itemvalue="JUnit.PlaneTests.testConstructor" />
       </list>
     </recent_temporary>
   </component>
@@ -211,7 +218,10 @@
       <workItem from="1679984305936" duration="1050000" />
       <workItem from="1680012376599" duration="15180000" />
       <workItem from="1680034687981" duration="898000" />
-      <workItem from="1680100240523" duration="686000" />
+      <workItem from="1680100240523" duration="839000" />
+      <workItem from="1680119270001" duration="7681000" />
+      <workItem from="1680474315793" duration="28000" />
+      <workItem from="1680526623830" duration="1366000" />
     </task>
     <task id="LOCAL‎-00001" summary="Initial commit">
       <created>1677766807530</created>
@@ -297,7 +307,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1680100332668</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL‎-00013" summary="///nothing">
+      <created>1680100937211</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL‎-00013" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1680100937211</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +343,8 @@
     <MESSAGE value="delete line" />
     <MESSAGE value="///" />
     <MESSAGE value="///names" />
-    <option name="LAST_COMMIT_MESSAGE" value="///names" />
+    <MESSAGE value="///nothing" />
+    <option name="LAST_COMMIT_MESSAGE" value="///nothing" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
