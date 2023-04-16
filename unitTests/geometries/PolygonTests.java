@@ -6,9 +6,12 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static primitives.Util.isZero;
-
-class PolygonTests
-{
+/**
+ * Unit tests for {@link Polygon} class
+ *
+ * @author hodaya zohar && shoham shervi
+ */
+class PolygonTests {
     /** Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}. */
     @Test
     public void testConstructor() {

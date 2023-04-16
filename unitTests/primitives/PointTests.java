@@ -4,6 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit tests for {@link Point} class
+ *
+ * @author hodaya zohar && shoham shervi
+ */
 class PointTests {
 Point p=new Point(1,1,1);
     /*

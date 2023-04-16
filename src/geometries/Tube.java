@@ -2,6 +2,7 @@ package geometries;
 
 import primitives.Point;
 import primitives.Ray;
+import primitives.Util;
 import primitives.Vector;
 /**
  The Tube class is a subclass of the RadialGeometry class and represents a 3D tube in space.
@@ -28,7 +29,13 @@ public class Tube extends RadialGeometry {
      @return null
      */
     public Vector getNormal(Point p) {
-return null;
+Point p0= axisRay.getP0();
+Vector vector=axisRay.getDir();
+double t=vector.dotProduct(p.subtract(p0));
+Point o=p0.add(vector.scale(t));
+return p.subtract(o);
+
+
     }
     /**
 
