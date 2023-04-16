@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static primitives.Util.isZero;
 
+/**
+ * Unit tests for {@link Vector} class
+ *
+ * @author hodaya zohar && shoham shervi
+ */
 class VectorTests {
 
     //Test method for {@link primitives.Vector#add(primitives.Vector)}
@@ -97,7 +102,7 @@ class VectorTests {
         assertTrue(isZero(vr.dotProduct(v1)), "crossProduct() result is not orthogonal to 1st operand");
         assertTrue(isZero(vr.dotProduct(v2)), "crossProduct() result is not orthogonal to 2nd operand");
 
-        //  Eliezer Gensburger, [27/03/2023 17:35]
+
 // =============== Boundary Values Tests ==================
         // TC11: test zero vector from cross-productof co-lined vectors
         Vector v3 = new Vector(-2, -4, -6);

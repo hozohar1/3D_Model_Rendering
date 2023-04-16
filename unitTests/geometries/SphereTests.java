@@ -6,7 +6,11 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static primitives.Util.isZero;
-
+/**
+ * Unit tests for {@link Sphere} class
+ *
+ * @author hodaya zohar && shoham shervi
+ */
 class SphereTests {
 
     @Test
