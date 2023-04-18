@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e26e8a0f-60e9-4047-bcea-bb7707a3f8d6" name="Changes" comment="///ZOOM">
+    <list default="true" id="e26e8a0f-60e9-4047-bcea-bb7707a3f8d6" name="Changes" comment="///ZOOM33">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/geometries/CylinderTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/test/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/test/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/ISE5783_9287_4780/geometries/CylinderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/ISE5783_9287_4780/geometries/CylinderTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/ISE5783_9287_4780/geometries/TubeTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/ISE5783_9287_4780/geometries/TubeTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTests/geometries/CylinderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/geometries/CylinderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTests/geometries/TubeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/geometries/TubeTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +95,7 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.All in ISE5783_9287_4780">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.Main" />
       <module name="ISE5783_9287_4780" />
@@ -99,6 +105,30 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in ISE5783_9287_4780" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9287_4780" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CylinderTest.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9287_4780" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="geometries.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.CylinderTest" />
+      <option name="METHOD_NAME" value="testGetNormal" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -115,21 +145,6 @@
       <option name="MAIN_CLASS_NAME" value="geometries.TriangleTests" />
       <option name="METHOD_NAME" value="testGetNormal" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TubeTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9287_4780" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.TubeTests" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -166,29 +181,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TubeTests.testGetNormal1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9287_4780" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.TubeTests" />
-      <option name="METHOD_NAME" value="testGetNormal1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in ISE5783_9287_4780" />
+        <item itemvalue="JUnit.CylinderTest.testGetNormal" />
         <item itemvalue="JUnit.TubeTests.getNormal" />
         <item itemvalue="JUnit.TubeTests.testGetNormal" />
         <item itemvalue="JUnit.TriangleTests.testGetNormal" />
-        <item itemvalue="JUnit.TubeTests" />
-        <item itemvalue="JUnit.TubeTests.testGetNormal1" />
       </list>
     </recent_temporary>
   </component>
@@ -220,7 +219,8 @@
       <workItem from="1681473738050" duration="11977000" />
       <workItem from="1681581153584" duration="650000" />
       <workItem from="1681589089832" duration="577000" />
-      <workItem from="1681589684407" duration="7921000" />
+      <workItem from="1681589684407" duration="8388000" />
+      <workItem from="1681807672611" duration="12027000" />
     </task>
     <task id="LOCAL‎-00001" summary="Initial commit">
       <created>1677766807530</created>
@@ -348,7 +348,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1681658032632</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL‎-00019" summary="///ZOOM33">
+      <created>1681658514983</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL‎-00019" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1681658514983</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,7 +389,8 @@
     <MESSAGE value="///LEVEL 2" />
     <MESSAGE value="///LEVEL 2.." />
     <MESSAGE value="///ZOOM" />
-    <option name="LAST_COMMIT_MESSAGE" value="///ZOOM" />
+    <MESSAGE value="///ZOOM33" />
+    <option name="LAST_COMMIT_MESSAGE" value="///ZOOM33" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -391,16 +399,6 @@
           <url>file://$PROJECT_DIR$/unitTests/geometries/TriangleTests.java</url>
           <line>17</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/unitTests/geometries/TubeTests.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/primitives/Vector.java</url>
-          <line>88</line>
-          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
