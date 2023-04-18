@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PointTests {
 Point p=new Point(1,1,1);
     /*
-           * Test method for {@link primitives.Point#add(primitives.Vector)}.
+    * Test method for {@link primitives.Point#add(primitives.Vector)}.
             */
     @Test
     void testAdd() {
