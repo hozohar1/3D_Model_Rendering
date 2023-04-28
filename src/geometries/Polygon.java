@@ -2,14 +2,16 @@ package geometries;
 
 import static primitives.Util.isZero;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
 
 /** Polygon class represents two-dimensional polygon in 3D Cartesian coordinate
  * system
- * @author Dan */
+ * @author hodaya zohar && shoham shervi */
 public class Polygon implements Geometry {
     /** List of polygon's vertices */
     protected final List<Point> vertices;
@@ -78,7 +80,51 @@ public class Polygon implements Geometry {
                 throw new IllegalArgumentException("All vertices must be ordered and the polygon must be convex");
         }
     }
-
+    /**
+     * Returns the normal vector to the plane
+     *
+     * @param point The point at which the normal vector is required.
+     * @return The normal vector to the plane
+     */
     @Override
     public Vector getNormal(Point point) { return plane.getNormal(); }
+
+   /* @Override
+    public List<Point> findIntersection(Ray r) {
+        // Find the intersection point between the ray and the polygon's plane
+        List<Point> planeIntersectionPoints = plane.findIntsersections(ray);
+
+        if (planeIntersectionPoints == null) {
+            // The ray does not intersect the polygon's plane
+            return null;
+        }
+
+        // Check if the intersection point is inside the polygon
+        Vector v1 = vertices.get(0).subtract(ray.getP0());
+        Vector v2 = vertices.get(1).subtract(ray.getP0());
+        Vector normal = v1.crossProduct(v2).normalize();
+
+        List<Point> result = new ArrayList<>();
+
+        for (int i = 0; i < size; ++i) {
+            Vector edge = vertices.get(i).subtract(ray.getP0());
+            Vector crossProduct = edge.crossProduct(vertices.get((i+1)%size).subtract(ray.getP0()));
+            if (normal.dotProduct(crossProduct) > 0) {
+                // The intersection point is outside the polygon
+                return null;
+            }
+        }
+
+        // The intersection point is inside the polygon
+        for (Point intersectionPoint : planeIntersectionPoints) {
+            result.add(intersectionPoint);
+        }
+
+        return result;
+    } */
+
+   @Override
+   public List<Point> findIntsersections(Ray ray) {
+return null;
+   }
 }

@@ -106,4 +106,14 @@ this.xyz=d;
         return (((this.xyz.d1-p.xyz.d1)* (this.xyz.d1-p.xyz.d1))+ ((this.xyz.d2-p.xyz.d2)* (this.xyz.d2-p.xyz.d2))+ ((this.xyz.d3-p.xyz.d3)*( this.xyz.d3-p.xyz.d3)));
 
     }
+
+    public double getX() {
+        return this.xyz.d1;
+    }
+    public double getY() {
+        return this.xyz.d2;
+    }
+    public double getZ() {
+        return this.xyz.d3;
+    }
 }

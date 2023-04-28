@@ -2,7 +2,10 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static primitives.Util.isZero;
@@ -52,6 +55,60 @@ class PlaneTests {
         for (int i = 0; i < 3; ++i)
             assertTrue(isZero(result.dotProduct(pts[i].subtract(pts[i == 0 ? 3 : i - 1]))),
                     "Plane's normal is not orthogonal to one of the edges");
+    }
+
+
+    /**
+     * Test method for {@link Plane#findIntsersections(Ray)}.
+     */
+    @Test
+    void testFindIntersections() {
+        Plane plane = new Plane(new Point(-0.5, -0.5, 0), new Point(1, 0, 0), new Point(0, 1, 0));
+
+        // ============ Equivalence Partitions Tests ==============
+        // TC01: Ray intersects the plane.
+        Ray ray = new Ray(new Point(1, 1, 1), new Vector(-1, 0, -1));
+        List<Point> expRes = List.of(new Point(0, 1, 0));
+        List<Point> res = plane.findIntsersections(ray);
+        assertEquals(res.size(), 1, "TC01: Ray intersects the plane EP doesn't work.");
+        assertEquals(res, expRes, "TC01: Ray intersects the plane EP doesn't work.");
+
+        // TC02: Ray does not intersect the plane.
+        ray = new Ray(new Point(1, 1, 1), new Vector(1, 1, 2));
+        assertNull(plane.findIntsersections(ray), "TC01: Ray does not intersects the plane EP doesn't work.");
+
+
+        // =============== Boundary Values Tests ==================
+        // TC11: Ray is parallel and included in the plane.
+        ray = new Ray(new Point(0, 1, 0), new Vector(1, 0, 0));
+        assertNull(plane.findIntsersections(ray), "TC11: Ray is parallel and included in the plane BVA doesn't work.");
+
+        // TC12: Ray is parallel and not included in the plane.
+        ray = new Ray(new Point(0, 1, 1), new Vector(1, 0, 0));
+        assertNull(plane.findIntsersections(ray), "TC12: Ray is parallel and not included in the plane BVA doesn't work.");
+
+        // TC13: Ray is orthogonal to the plane and before the plane.
+        ray = new Ray(new Point(0, 1, 1), new Vector(0, 0, -1));
+        expRes = List.of(new Point(0, 1, 0));
+        res = plane.findIntsersections(ray);
+        assertEquals(res.size(), 1, "TC13: Ray is orthogonal to the plane and before the plane BVA doesn't work.");
+        assertEquals(res, expRes, "TC13: Ray is orthogonal to the plane and before the plane BVA doesn't work.");
+
+        // TC14: Ray is orthogonal to the plane and on the plane.
+        ray = new Ray(new Point(0, 2, 0), new Vector(0, 0, -1));
+        assertNull(plane.findIntsersections(ray), "TC14: Ray is orthogonal to the plane and in the plane BVA doesn't work.");
+
+        // TC15: Ray is orthogonal to the plane and after the plane.
+        ray = new Ray(new Point(0, 2, -1), new Vector(0, 0, -1));
+        assertNull(plane.findIntsersections(ray), "TC15: Ray is orthogonal to the plane and after the plane BVA doesn't work.");
+
+        // TC16: Ray begins in the same point which appears as the plane's reference point.
+        ray = new Ray(plane.getQ0(), new Vector(1, 1, 0));
+        assertNull(plane.findIntsersections(ray), "TC16: Ray begins in the same point which appears as the plane's reference point BVA doesn't work.");
+
+        // TC17: Ray begins in the same plane but the ray it's not parallel or orthogonal to the plane
+        ray = new Ray(new Point(0, 1, 0), new Vector(1, 1, -1));
+        assertNull(plane.findIntsersections(ray), "TC17: Ray begins at the plane but the ray it's not parallel or orthogonal to the plane BVA doesn't work.");
     }
 
 }

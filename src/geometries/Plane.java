@@ -8,26 +8,27 @@ import java.util.List;
 
 import static primitives.Util.*;
 
-import static primitives.Util.*;
-
 /**
  * The Plane class implements the Geometry interface and represents a 3D plane in space.
+ * @author hodaya zohar && shoham shervi
  */
 public class Plane implements Geometry {
+
     /**
      * The point q0 represents a point on the plane.
      */
     final private Point q0;
+
     /**
      * The normal vector represents the normal vector to the plane.
      */
-    final private  Vector normal;
+    final private Vector normal;
 
     /**
      * Creates a new Plane object with the specified q0 and normal vector.
      *
      * @param q0     A point on the plane.
-     * @param normal The normal vector to the plane.
+     * @param vector The normal vector to the plane.
      */
     public Plane(Point q0, Vector vector) {
         this.q0 = q0;
@@ -44,8 +45,7 @@ public class Plane implements Geometry {
      * @param a A point on the plane.
      * @param b A point on the plane.
      * @param c A point on the plane.
-     *           * @throws IllegalArgumentException when the points are on the same line
-     *
+     * @throws IllegalArgumentException when the points are on the same line
      */
     public Plane(Point a, Point b, Point c) {
         Vector v1 = b.subtract(a);
@@ -80,5 +80,48 @@ public class Plane implements Geometry {
      */
     public Point getQ0() {
         return q0;
+    }
+
+    /**
+     * Computes intersections of the plane with a given ray.
+     *
+     * @param ray The ray to compute intersections with.
+     * @return A list of intersection points (empty if none).
+     */
+    @Override
+    public List<Point> findIntsersections(Ray ray) {
+        Point p0 = ray.getP0();
+        Vector v = ray.getDir();
+
+        if (q0.equals(p0)) {
+            // The ray's starting point is on the plane
+            return null;
+        }
+
+        Vector u = q0.subtract(p0);
+        double k = alignZero(normal.dotProduct(u));
+
+        if (isZero(k)) {
+            // The ray is parallel to the plane
+            return null;
+        }
+
+        double nv = alignZero(normal.dotProduct(v));
+
+        if (isZero(nv)) {
+            // The ray is parallel to the plane
+            return null;
+        }
+
+        double t = alignZero(k / nv);
+
+        if (t <= 0) {
+            // The intersection point is behind the ray's starting point
+            return null;
+        }
+
+        Point intersection = ray.getPoint(t);
+
+        return List.of(intersection);
     }
 }

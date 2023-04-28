@@ -2,7 +2,10 @@ package geometries;
 
 import org.junit.jupiter.api.Test;
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static primitives.Util.isZero;
@@ -79,4 +82,32 @@ class PolygonTests {
             assertTrue(isZero(result.dotProduct(pts[i].subtract(pts[i == 0 ? 3 : i - 1]))),
                     "Polygon's normal is not orthogonal to one of the edges");
     }
-}
+
+    /* @Test
+    void testFindIntersections() {
+        // Create a polygon
+        Polygon polygon = new Polygon(
+                new Point(0, 0, 0),
+                new Point(0, 1, 0),
+                new Point(1, 1, 0),
+                new Point(1, 0, 0)
+        );
+
+        // Create a ray that intersects the polygon
+        Ray ray1 = new Ray(new Point(0.5, 0.5, -1), new Vector(0, 0, 1));
+        List<Point> intersections1 = polygon.findIntsersections(ray1);
+        assertEquals(1, intersections1.size(), "Wrong number of intersections for ray1");
+        assertEquals(new Point(0.5, 0.5, 0), intersections1.get(0), "Wrong intersection point for ray1");
+
+        // Create a ray that doesn't intersect the polygon
+        Ray ray2 = new Ray(new Point(0.5, 0.5, -1), new Vector(0, 1, 0));
+        List<Point> intersections2 = polygon.findIntsersections(ray2);
+        assertEquals(0, intersections2.size(), "Wrong number of intersections for ray2");
+
+        // Create a ray that starts inside the polygon
+        Ray ray3 = new Ray(new Point(0.5, 0.5, 0), new Vector(0, 0, 1));
+        List<Point> intersections3 = polygon.findIntsersections(ray3);
+        assertEquals(0, intersections3.size(), "Wrong number of intersections for ray3");
+    }*/
+    }
+
