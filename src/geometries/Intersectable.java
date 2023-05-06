@@ -19,4 +19,5 @@ public interface Intersectable {
      * @return a list of intersection points, or null if there are no intersections
      */
     List<Point> findIntsersections(Ray ray);
+
 }

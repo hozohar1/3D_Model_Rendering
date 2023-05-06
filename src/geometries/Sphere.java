@@ -78,30 +78,16 @@ public class Sphere extends RadialGeometry {
 
         double tm = alignZero(v.dotProduct(u));
         double dSqr = alignZero(u.lengthSquared() - tm * tm);
-        if (dSqr >= radius) {
-            return null;
-        }
-        double thSqr = radius * radius - dSqr;
+        double thSqr = radius*radius - dSqr;
         // no intersections : the ray direction is above the sphere
         if (alignZero(thSqr) <= 0) return null;
 
         double th = alignZero(Math.sqrt(thSqr));
-        double t1 = alignZero(tm - th);
-        double t2 = alignZero(tm + th);
-        if (t1 > 0 && t2 > 0) {
-            Point p1 = ray.getPoint(t1);
-            Point p2 = ray.getPoint(t2);
-            return List.of(p1, p2);
-        }
-        if (t1 > 0) {
-            Point p1 = ray.getPoint(t1);
-            return List.of(p1);
-        }
-        if (t2 > 0) {
-            Point p2 = ray.getPoint(t2);
-            return List.of(p2);
-        }
-        return null;
 
+        double t2 = alignZero(tm + th);
+        if (t2 <= 0) return null;
+
+        double t1 = alignZero(tm - th);
+        return t1 <= 0 ? List.of(ray.getPoint(t2)) : List.of(ray.getPoint(t1), ray.getPoint(t2));
     }
 }

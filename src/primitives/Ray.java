@@ -32,14 +32,13 @@ public class Ray {
      */
     @Override
     public boolean equals(Object obj) {
-        if (obj == this) {
+        if (this == obj)
             return true;
-        }
-        if (!(obj instanceof Ray)) {
+        if (obj == null)
             return false;
-        }
-        Ray other = (Ray) obj;
-        return this.dir == other.dir &&this.p0 == other.p0;
+        if (!(obj instanceof Ray other))
+            return false;
+        return this.dir.equals(other.dir) && this.p0.equals(other.p0);
     }
 
     /**
