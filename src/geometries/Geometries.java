@@ -8,8 +8,6 @@ import java.util.*;
 /**@author hodaya zohar && shoham shervi  */
 public class Geometries implements Intersectable{
     private final List<Intersectable> geometries =new LinkedList<>();
-
-
     /**
      * constructor for list of geometries
      *
