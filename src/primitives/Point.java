@@ -8,7 +8,7 @@ package primitives;
 public class Point {
     /** The coordinates of the point. */
    final Double3  xyz;
-
+    public static final Point ZERO = new Point(0, 0, 0);
     /**
      * Constructs a new point with the specified coordinates.
      *
