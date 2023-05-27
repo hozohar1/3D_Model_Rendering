@@ -41,7 +41,6 @@ public class Scene {
     public List<LightSource> lights = new LinkedList<>();
     /**
      * set the scene`s light
-     *
      * @param lights new light
      * @return the updated scene itself
      */
