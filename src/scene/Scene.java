@@ -2,7 +2,11 @@ package scene;
 
 import geometries.Geometries;
 import lighting.AmbientLight;
+import lighting.LightSource;
 import primitives.*;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import static java.awt.Color.BLACK;
 
@@ -31,6 +35,20 @@ public class Scene {
      * A list of all geometries in the scene.
      */
     public Geometries geometries;
+    /**
+     * A list of all kind of light
+     */
+    public List<LightSource> lights = new LinkedList<>();
+    /**
+     * set the scene`s light
+     *
+     * @param lights new light
+     * @return the updated scene itself
+     */
+    public Scene setLights(List<LightSource> lights) {
+        this.lights = lights;
+        return this;
+    }
 
 
     /**

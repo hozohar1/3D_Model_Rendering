@@ -29,11 +29,14 @@ public class Triangle extends Polygon {
      * @return A list of intersection points with the triangle, or null if the ray doesn't intersect the triangle.
      */
     @Override
-    public List<Point> findIntsersections(Ray ray) {
-        List<Point> result = plane.findIntsersections(ray);
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        List<GeoPoint> result = plane.findGeoIntersectionsHelper(ray);
 
-        // Check if the ray intersect the plane.
+        //Check if the ray intersect the plane.
         if (result == null) return null;
+
+        for (GeoPoint g : result)
+            g.geometry = this;
 
         Point p0 = ray.getP0();
         Vector v = ray.getDir();

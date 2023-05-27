@@ -12,7 +12,7 @@ import static primitives.Util.*;
  * The Plane class implements the Geometry interface and represents a 3D plane in space.
  * @author hodaya zohar && shoham shervi
  */
-public class Plane implements Geometry {
+public class Plane extends Geometry {
 
     /**
      * The point q0 represents a point on the plane.
@@ -89,39 +89,22 @@ public class Plane implements Geometry {
      * @return A list of intersection points (empty if none).
      */
     @Override
-    public List<Point> findIntsersections(Ray ray) {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         Point p0 = ray.getP0();
         Vector v = ray.getDir();
 
-        if (q0.equals(p0)) {
-            // The ray's starting point is on the plane
+        Vector u;
+        try {
+            u = q0.subtract(p0);
+        } catch (IllegalArgumentException ignore) {
             return null;
         }
 
-        Vector u = q0.subtract(p0);
-        double k = alignZero(normal.dotProduct(u));
+        double nv = normal.dotProduct(v);
+        //ray parallel to plane or ray begins in the same point which appears as the plane's reference point
+        if (isZero(nv)) return null;
 
-        if (isZero(k)) {
-            // The ray is parallel to the plane
-            return null;
-        }
-
-        double nv = alignZero(normal.dotProduct(v));
-
-        if (isZero(nv)) {
-            // The ray is parallel to the plane
-            return null;
-        }
-
-        double t = alignZero(k / nv);
-
-        if (t <= 0) {
-            // The intersection point is behind the ray's starting point
-            return null;
-        }
-
-        Point intersection = ray.getPoint(t);
-
-        return List.of(intersection);
+        double t = alignZero(normal.dotProduct(u) / nv);
+        return t <= 0 ? null : List.of(new GeoPoint(this, ray.getPoint(t)));
     }
 }

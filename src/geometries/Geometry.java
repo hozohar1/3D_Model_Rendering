@@ -1,5 +1,7 @@
 package geometries;
 
+import primitives.Color;
+import primitives.Material;
 import primitives.Point;
 import primitives.Vector;
 /**
@@ -9,12 +11,61 @@ import primitives.Vector;
  and defines a method to get the normal vector at a specific point on the surface.
  @author hodaya zohar && shoham shervi
  */
-public interface Geometry extends Intersectable {
-    /**
+public abstract class Geometry extends Intersectable {
+    private Material material = new Material();
 
-     Returns the normal vector at the given point on the surface of this Geometry.
-     @param p the point on the surface for which to retrieve the normal vector
-     @return the normal vector at the given point
+    /**
+     * setter for material
+     *
+     * @param material the material of the geometry object
+     * @return the geometry object
      */
-    public Vector getNormal(Point p);
+    public Geometry setMaterial(Material material) {
+        this.material = material;
+        return this;
+    }
+
+    /**
+     * getter for material
+     *
+     * @return the material of the geometry object
+     */
+    public Material getMaterial() {
+        return material;
+    }
+
+    /**
+     * the function get point on the geometry and return the vector normal to the geometry surface at the point
+     *
+     * @param p The point on the geometry
+     * @return The vector normal
+     */
+    public abstract Vector getNormal(Point p);
+
+    /**
+     * the color of the geometry
+     */
+    protected Color emission = Color.BLACK;
+
+    /**
+     * getter for emission
+     *
+     * @return the emission color
+     */
+    public Color getEmission() {
+        return emission;
+    }
+
+    /**
+     * setter for emission
+     *
+     * @param emission the emission color
+     * @return the geometry object
+     */
+    public Geometry setEmission(Color emission) {
+        this.emission = emission;
+        return this;
+    }
+
+
 }
