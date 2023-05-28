@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *  @author hodaya zohar && shoham shervi
  */
 class ImageWriterTest {
+
     @Test
     void writeToImageTest() {
         ImageWriter imageWriter = new ImageWriter("test", 800, 500);
