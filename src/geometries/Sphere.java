@@ -12,61 +12,56 @@ import static primitives.Util.alignZero;
  * The Sphere class is a subclass of the RadialGeometry class and represents a 3D sphere in space.
  @author hodaya zohar && shoham shervi
  */
-public class Sphere extends RadialGeometry {
-    /**
-     * The center point represents the center of the sphere.
-     */
+public class Sphere extends Geometry {
     final private Point center;
+    final private double radius;
+    final private double radiusSqr;
 
     /**
-     * Creates a new Sphere object with the specified radius and center point.
+     * constructor for sphere by point and radius
      *
-     * @param r      The radius of the sphere.
-     * @param center The center point of the sphere.
+     * @param center point
+     * @param radius radius of sphere
      */
-    public Sphere(double r, Point center) {
-        super(r);
+    public Sphere(Point center, double radius) {
         this.center = center;
-        this.radius = r;
+        this.radius = radius;
+        this.radiusSqr = radius * radius;
     }
 
     /**
-     * Returns null as the normal vector to a sphere is not defined at a single point.
+     * getting center
      *
-     * @param p The point at which the normal vector is required.
-     * @return null
-     */
-    public Vector getNormal(Point p) {
-        return p.subtract(center).normalize();
-    }
-
-    /**
-     * Returns the center point of the sphere.
-     *
-     * @return The center point of the sphere.
+     * @return center of sphere
      */
     public Point getCenter() {
         return center;
     }
 
     /**
-     * Overrides the getRadius() method in the superclass to return the radius of the sphere.
+     * getting radius
      *
-     * @return The radius of the sphere.
+     * @return radius of sphere
      */
-    @Override
     public double getRadius() {
         return radius;
     }
 
-    /**
-     * Finds the intersections of the specified ray with the sphere.
-     *
-     * @param ray The ray with which the sphere is intersected.
-     * @return A list of intersection points with the sphere.
-     */
     @Override
-    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+    public String toString() {
+        return "Sphere{" +
+                "center=" + center +
+                ", radius=" + radius +
+                '}';
+    }
+
+    @Override
+    public Vector getNormal(Point p) {
+        return p.subtract(center).normalize();
+    }
+
+    @Override
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) {
         Point p0 = ray.getP0();
         Vector v = ray.getDir();
 
@@ -74,7 +69,7 @@ public class Sphere extends RadialGeometry {
         try {
             u = center.subtract(p0);
         } catch (IllegalArgumentException ignore) {
-            return List.of(new GeoPoint(this, ray.getPoint(radius)));
+            return alignZero(radius - maxDistance) > 0 ? null : List.of(new GeoPoint(this, ray.getPoint(radius)));
         }
 
         double tm = alignZero(v.dotProduct(u));
@@ -89,7 +84,17 @@ public class Sphere extends RadialGeometry {
         if (t2 <= 0) return null;
 
         double t1 = alignZero(tm - th);
-        return t1 <= 0 ? List.of(new GeoPoint(this, ray.getPoint(t2)))
-                : List.of(new GeoPoint(this, ray.getPoint(t1)), new GeoPoint(this, ray.getPoint(t2)));
+        if (t1 <= 0) {
+            if (alignZero(t2 - maxDistance) <= 0)
+                return List.of(new GeoPoint(this, ray.getPoint(t2)));
+            return null;
+        } else {
+            List<GeoPoint> result = new LinkedList<>();
+            if (alignZero(t1 - maxDistance) <= 0)
+                result.add(new GeoPoint(this, ray.getPoint(t1)));
+            if (alignZero(t2 - maxDistance) <= 0)
+                result.add(new GeoPoint(this, ray.getPoint(t2)));
+            return result.isEmpty() ? null : result;
+        }
     }
 }

@@ -54,4 +54,3 @@ class TubeTests {
         assertEquals(new Vector(1, 1, 0), t.getNormal(new Point(1, 1, 1)), "the normal is not correct");
     }
 }
-

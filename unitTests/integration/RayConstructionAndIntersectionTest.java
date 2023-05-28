@@ -23,7 +23,7 @@ public class RayConstructionAndIntersectionTest {
                 .setViewPlaneDistance(1).setViewPlaneSize(3, 3);
 
         // TC01: Sphere, 2 intersection points
-        Sphere sp = new Sphere(1,new Point(0, 0, -3));
+        Sphere sp = new Sphere(new Point(0, 0, -3),1);
 
 
         assertEquals(2, intersectionPointCountThroughCamera(camera, sp), "TC01: Sphere, 2 intersection points test not working");
@@ -31,17 +31,17 @@ public class RayConstructionAndIntersectionTest {
         // TC02: Sphere, 18 intersection points
         camera = new Camera(new Point(0, 0, 0.5), new Vector(0, 0, -1), new Vector(0, 1, 0))
                 .setViewPlaneDistance(1).setViewPlaneSize(3, 3);
-        sp = new Sphere(2.5,new Point(0, 0, -2.5));
+        sp = new Sphere(new Point(0, 0, -2.5),2.5);
 
         assertEquals(18, intersectionPointCountThroughCamera(camera, sp), "TC02: Sphere, 18 intersection points test not working");
 
         // TC03: Sphere, 10 intersection points
-        sp = new Sphere(2,new Point(0, 0, -2));
+        sp = new Sphere(new Point(0, 0, -2),2);
 
         assertEquals(10, intersectionPointCountThroughCamera(camera, sp), "TC03: Sphere, 10 intersection points test not working");
 
         // TC04: Sphere, 0 intersection points
-        sp = new Sphere(0.5,new Point(0, 0, 1));
+        sp = new Sphere(new Point(0, 0, 1),0.5);
 
         assertEquals(0, intersectionPointCountThroughCamera(camera, sp), "TC04: Sphere, 0 intersection points test not working");
 

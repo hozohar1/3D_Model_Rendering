@@ -15,22 +15,19 @@ import static primitives.Util.alignZero;
 public class Triangle extends Polygon {
 
     /**
-     * Creates a new Triangle object with the specified vertices.
-     * @param vertices The vertices of the triangle in 3D space.
+     * constructor for triangle by 3 points
+     *
+     * @param p1 coordinate value for X axis
+     * @param p2 coordinate value for Y axis
+     * @param p3 coordinate value for Z axis
      */
-    public Triangle(Point... vertices) {
-        super(vertices);
+    public Triangle(Point p1, Point p2, Point p3) {
+        super(p1, p2, p3);
     }
 
-    /**
-     * Finds the intersection points of a ray with the triangle.
-     *
-     * @param ray The ray to intersect with the triangle.
-     * @return A list of intersection points with the triangle, or null if the ray doesn't intersect the triangle.
-     */
     @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
-        List<GeoPoint> result = plane.findGeoIntersectionsHelper(ray);
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) {
+        List<GeoPoint> result = plane.findGeoIntersectionsHelper(ray, maxDistance);
 
         //Check if the ray intersect the plane.
         if (result == null) return null;

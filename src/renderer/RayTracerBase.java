@@ -14,10 +14,11 @@ public abstract class RayTracerBase {
     /**
      * The scene to trace.
      */
-    protected Scene scene;
+    protected final Scene scene;
 
     /**
-     * Constructs a new instance of ray tracer (the innherit class) with a given scene.
+     * Constructs a new instance of ray tracer (the inherit class) with a given scene.
+     *
      * @param scene The given scene.
      */
     RayTracerBase(Scene scene) {
@@ -35,4 +36,3 @@ public abstract class RayTracerBase {
      */
     public abstract Color traceRay(Ray ray);
 }
-

@@ -23,10 +23,10 @@ class SphereTest {
     void testGetNormal() {
         // ============ Equivalence Partitions Tests =============
         //        //TC01: Test that the= normal is proper
-        Sphere sph = new Sphere(1.0,new Point(0, 0, 1));
+        Sphere sph = new Sphere(new Point(0, 0, 1), 1.0);
         assertEquals(new Vector(0, 0, 1), sph.getNormal(new Point(0, 0, 2)), "TC01: Wrong normal to sphere");
 
-        Sphere sp = new Sphere(1,new Point(0, 0, 0));
+        Sphere sp = new Sphere(new Point(0, 0, 0), 1);
         assertEquals(sp.getNormal(new Point(0, 0, 1)), new Vector(0, 0, 1), "TC01: Sphere.getNormal() gives wrong normal.");
     }
 
@@ -35,7 +35,7 @@ class SphereTest {
      */
     @Test
     void testFindIntersections() {
-        Sphere sphere = new Sphere(1,new Point(-3, 0, 0));
+        Sphere sphere = new Sphere(new Point(-3, 0, 0), 1);
         // ============ Equivalence Partitions Tests ==============
 
         // TC01: Ray does not intersect the sphere.
@@ -66,7 +66,7 @@ class SphereTest {
 
         // =============== Boundary Values Tests ==================
         // **** Group: Ray's line crosses the sphere (but not the center)
-        // TC11: Ray starts at sphere and goes inside (1 points)
+        // TC11: Ray starts at sphere and goes inside ( one points)
         ray = new Ray(new Point(-4, 0, 0), new Vector(1, 0, 1));
         expRes = List.of(new Point(-3, 0, 1));
         res = sphere.findIntersections(ray);

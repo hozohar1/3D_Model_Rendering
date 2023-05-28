@@ -70,6 +70,8 @@ public class Camera {
     }
 
     /**
+     * get the width of the view plane
+     *
      * @return The width from the view plane.
      */
     public double getWidth() {
@@ -77,6 +79,8 @@ public class Camera {
     }
 
     /**
+     * get the height of the view plane
+     *
      * @return The height from the view plane.
      */
     public double getHeight() {
@@ -84,6 +88,8 @@ public class Camera {
     }
 
     /**
+     * get the distance from the p0 to the view plane
+     *
      * @return The distance from the p0 to the view plane.
      */
     public double getDistance() {
@@ -91,6 +97,8 @@ public class Camera {
     }
 
     /**
+     * init the image writer
+     *
      * @param imageWriter The imageWriter to set.
      * @return The current instance (Builder pattern).
      */
@@ -100,6 +108,8 @@ public class Camera {
     }
 
     /**
+     * init the ray tracer
+     *
      * @param rayTracer The rayTracer to set.
      * @return The current instance (Builder pattern).
      */
@@ -109,6 +119,8 @@ public class Camera {
     }
 
     /**
+     * init the view plane by the width and height
+     *
      * @param width  The number to set as the view plane's width.
      * @param height The number to set as the view plane's height.
      * @return The current instance (Builder pattern).
@@ -120,6 +132,8 @@ public class Camera {
     }
 
     /**
+     * init the distance of the view plane
+     *
      * @param distance The number to set as the distance between the p0 and the view plane.
      * @return The current instance (Builder pattern).
      */
@@ -161,16 +175,12 @@ public class Camera {
      * @return The current instance (Builder pattern).
      */
     public Camera renderImage() {
-        try {
-            if (imageWriter == null)
-                throw new MissingResourceException(RESOURCE, CAMERA_CLASS, IMAGE_WRITER);
-            if (p0 == null || vTo == null || vUp == null || vRight == null || width == 0 || height == 0 || distance == 0)
-                throw new MissingResourceException(RESOURCE, CAMERA_CLASS, CAMERA);
-            if (rayTracer == null)
-                throw new MissingResourceException(RESOURCE, CAMERA_CLASS, RAY_TRACER);
-        } catch (MissingResourceException e) {
-            throw new UnsupportedOperationException(e.getMessage());
-        }
+        if (imageWriter == null)
+            throw new MissingResourceException(RESOURCE, CAMERA_CLASS, IMAGE_WRITER);
+        if (p0 == null || vTo == null || vUp == null || vRight == null || width == 0 || height == 0 || distance == 0)
+            throw new MissingResourceException(RESOURCE, CAMERA_CLASS, CAMERA);
+        if (rayTracer == null)
+            throw new MissingResourceException(RESOURCE, CAMERA_CLASS, RAY_TRACER);
 
         final int nX = imageWriter.getNx();
         final int nY = imageWriter.getNy();
@@ -180,6 +190,16 @@ public class Camera {
         return this;
     }
 
+
+    /**
+     * the method cast a ray through a pixel
+     *
+     * @param nX number of pixels on X axis in the view plane
+     * @param nY number of pixels on Y axis in the view plane
+     * @param j X coordinate of the pixel
+     * @param i Y coordinate of the pixel
+     * @return the color of the pixel
+     */
     private Color castRay(int nX, int nY, int j, int i) {
         return this.rayTracer.traceRay(this.constructRayThroughPixel(nX, nY, j, i));
     }
@@ -195,8 +215,11 @@ public class Camera {
         if (imageWriter == null)
             throw new MissingResourceException(RESOURCE, CAMERA_CLASS, IMAGE_WRITER);
 
-        for (int i = 0; i < imageWriter.getNy(); i++) {
-            for (int j = 0; j < imageWriter.getNx(); j++) {
+        final int nX = imageWriter.getNx();
+        final int nY = imageWriter.getNy();
+
+        for (int i = 0; i < nY; i++) {
+            for (int j = 0; j < nX; j++) {
                 if (i % interval == 0 || j % interval == 0) {
                     imageWriter.writePixel(j, i, color);
                 }
