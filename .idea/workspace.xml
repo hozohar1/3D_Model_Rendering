@@ -5,37 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e26e8a0f-60e9-4047-bcea-bb7707a3f8d6" name="Changes" comment="///NOTHING">
-      <change afterPath="$PROJECT_DIR$/unitTests/renderer/ShadowTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unitTests/renderer/ReflectionRefractionTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Plane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Plane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Polygon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Polygon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Sphere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Sphere.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Triangle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Tube.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Tube.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/ISE5783_9287_4780/geometries/PolygonTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/ISE5783_9287_4780/geometries/PolygonTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/Light.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/LightSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/LightSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/SpotLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/primitives/Ray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/primitives/Ray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/geometries/GeometriesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/geometries/GeometriesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/geometries/PolygonTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/geometries/PolygonTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/geometries/SphereTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/geometries/SphereTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/geometries/TubeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/geometries/TubeTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/integration/RayConstructionAndIntersectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/integration/RayConstructionAndIntersectionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unitTests/renderer/LightsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/LightsTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/RenderTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +135,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ReflectionRefractionTests.manyShapes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9287_4780" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="renderer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ReflectionRefractionTests" />
+      <option name="METHOD_NAME" value="manyShapes" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReflectionRefractionTests.zz" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9287_4780" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="renderer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.ReflectionRefractionTests" />
+      <option name="METHOD_NAME" value="zz" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TriangleTests.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9287_4780" />
       <extension name="coverage">
@@ -207,6 +217,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ReflectionRefractionTests.zz" />
+        <item itemvalue="JUnit.ReflectionRefractionTests.manyShapes" />
         <item itemvalue="JUnit.CylinderTest.testGetNormal" />
         <item itemvalue="JUnit.TubeTests.testGetNormal" />
         <item itemvalue="JUnit.TriangleTests.testGetNormal" />
@@ -260,7 +272,19 @@
       <workItem from="1684835064132" duration="3069000" />
       <workItem from="1685210926664" duration="1613000" />
       <workItem from="1685216534300" duration="9202000" />
-      <workItem from="1685304166966" duration="524000" />
+      <workItem from="1685304166966" duration="23026000" />
+      <workItem from="1685434845141" duration="17118000" />
+      <workItem from="1685460105570" duration="1383000" />
+      <workItem from="1685529619828" duration="126000" />
+      <workItem from="1685531529032" duration="247000" />
+      <workItem from="1685533222600" duration="6094000" />
+      <workItem from="1685565748848" duration="5367000" />
+      <workItem from="1685571197332" duration="31000" />
+      <workItem from="1685645271764" duration="858000" />
+      <workItem from="1685653316634" duration="2995000" />
+      <workItem from="1685721947539" duration="307000" />
+      <workItem from="1686041083931" duration="2997000" />
+      <workItem from="1686044418114" duration="8677000" />
     </task>
     <task id="LOCAL‎-00001" summary="Initial commit">
       <created>1677766807530</created>
@@ -465,7 +489,28 @@
       <option name="project" value="LOCAL‎" />
       <updated>1685211349710</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL‎-00030" summary="///PR01">
+      <created>1685304751731</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL‎-00030" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685304751731</updated>
+    </task>
+    <task id="LOCAL‎-00031" summary="///PR07">
+      <created>1685304801710</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL‎-00031" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685304801710</updated>
+    </task>
+    <task id="LOCAL‎-00032" summary="///NOTHING">
+      <created>1685304851929</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL‎-00032" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685304851929</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,8 +529,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="הה" />
-    <MESSAGE value="Initial commit" />
     <MESSAGE value="Initial commitממ" />
     <MESSAGE value="Initial ac" />
     <MESSAGE value="Initial ac הה" />
@@ -508,6 +551,8 @@
     <MESSAGE value="///shlav05" />
     <MESSAGE value="///PUSH TAG" />
     <MESSAGE value="///PUSH TAG06" />
+    <MESSAGE value="///PR01" />
+    <MESSAGE value="///PR07" />
     <MESSAGE value="///NOTHING" />
     <option name="LAST_COMMIT_MESSAGE" value="///NOTHING" />
   </component>

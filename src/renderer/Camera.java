@@ -1,11 +1,15 @@
 package renderer;
+
+
 import primitives.*;
 import primitives.Color;
 import primitives.Point;
 
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.MissingResourceException;
 
+import static java.lang.System.out;
 /**
  * Camera class represents the camera through which we see the scene.
  *  @author hodaya zohar && shoham shervi
@@ -161,7 +165,6 @@ public class Camera {
         Vector ijV = ijP.subtract(p0);
         return new Ray(p0, ijV);
     }
-
 
     private final String RESOURCE = "Renderer resource not set";
     private final String CAMERA_CLASS = "Camera";
