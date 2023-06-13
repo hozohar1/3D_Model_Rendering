@@ -111,7 +111,6 @@ public class RenderTests {
                     .setEmission(new Color(236,71,233).reduce(2)) //
                     .setMaterial(new Material().setKd(new Double3(0.3)).setKs(new Double3(0.2)).setShininess(300).setKr(new Double3(0.5)));
         }
-
         // Create another set of spheres
         Geometry[] spheres2 = new Sphere[10];
 
