@@ -5,6 +5,7 @@ package renderer;
 
 import static java.awt.Color.*;
 
+import lighting.PointLight;
 import org.junit.jupiter.api.Test;
 
 import geometries.Sphere;
@@ -26,14 +27,17 @@ public class ReflectionRefractionTests {
     @Test
     public void xx() {
         Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0))
-                .setViewPlaneSize(150, 150).setViewPlaneDistance(1000);
+                .setViewPlaneSize(150, 150).setViewPlaneDistance(1000) //set the DoF.
+                .setDepthOfFiled(true)
+                .setFPDistance(500)
+                .setApertureSize(1);
 
         scene.setAmbientLight(new AmbientLight(new Color(255, 255, 255), new Double3(0.1)));
         scene.geometries.add(// Triangle with transparency, reflection, and specular
                 new Triangle(new Point(-150, -150, -115), new Point(150, -150, -135), new Point(75, 75, -150))
                         .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(60).setKt(0.3).setKr(0.2)),
                 // Sphere with transparency, reflection, and diffuse
-                new Sphere(new Point(0, 0, -50), 20d).setEmission(new Color(0, 0, 255))
+                new Sphere(new Point(0, 0, -50), 30d).setEmission(new Color(0, 0, 255))
                         .setMaterial(new Material().setKd(0.4).setKs(0.3).setShininess(100).setKt(0.5)),
                 // Cylinder with reflection, specular, and diffuse
                 new Cylinder(10,new Ray(new Point(0, 0, -100), new Vector(0, 0, 1)), 40)
@@ -136,7 +140,7 @@ public class ReflectionRefractionTests {
       //  scene.setAmbientLight(new AmbientLight(new Color(255, 255, 255), new Double3(0.1)));
 
         // Number of spheres in the outer circle
-        int numSpheresOuter = 10;
+        int numSpheresOuter = 6;
         // Radius of the outer circle
         double circleRadiusOuter = 120;
         // Angle increment for each sphere in the outer circle
@@ -178,7 +182,7 @@ public class ReflectionRefractionTests {
 
             Sphere outerSphere = (Sphere) new Sphere(new Point(xOuter, yOuter, -100), 25d)
                     .setEmission(colors[colorIndexOuter])
-                    .setMaterial(new Material().setKd(0.4).setKs(0.2).setShininess(60).setKr(3.0));
+                    .setMaterial(new Material().setKd(0.0).setKs(0.2).setShininess(60).setKr(0.5));
 
             scene.geometries.add(outerSphere);
 
@@ -292,4 +296,39 @@ public class ReflectionRefractionTests {
                 .renderImage() //
                 .writeToImage();
     }
+
+    @Test
+    public void allFeature() {
+        Camera camera = new Camera(new Point(0, 0, 5000),
+                new Vector(0, 0, -1), new Vector(0, 1, 0)) //
+                .setViewPlaneSize(200, 200).setViewPlaneDistance(1000);
+
+        Scene scene = new Scene("Test scene")
+                .setAmbientLight(new AmbientLight(new Color(WHITE), new Double3(0.15)))
+                .setBackground(new Color(94, 97, 99));
+
+        scene.geometries.add( //
+                new Triangle(new Point(450, -350, 0),
+                        new Point(-500, -400, 0), new Point(0, 500, -80)) //
+                        .setEmission(new Color(75, 75, 75)) //
+                        .setMaterial(new Material().setKr(1).setKs(0.1).setShininess(10)),//
+                new Sphere(new Point(-100, 100, 300), 100d).setEmission(new Color(BLUE)) //
+                        .setMaterial(new Material().setKd(0.3).setKs(0.2).setShininess(30).setKt(0.6)),//
+                new Sphere(new Point(100, -200, 400), 100).setEmission(new Color(RED)) //
+                        .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(10).setKt(0.8)),//
+                new Sphere(new Point(200, 100, 800), 50d).setEmission(new Color(GREEN)) //
+                        .setMaterial(new Material().setKd(0.2).setKs(0.2).setShininess(20).setKt(0.3)));
+
+        scene.lights.add(new SpotLight(new Color(700, 400, 400),
+                new Point(0, 0, 900), new Vector(0.5, 2.5, -7.5)) //
+                .setKl(4E-5).setKq(2E-7));
+
+        ImageWriter imageWriter = new ImageWriter("allFeature", 2000, 2000);
+        camera.setImageWriter(imageWriter) //
+                .setRayTracer(new RayTracerBasic(scene)) //
+                .renderImage() //
+                .writeToImage();
+    }
+
+
 }

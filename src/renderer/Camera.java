@@ -1,6 +1,7 @@
 package renderer;
 
 
+import geometries.Plane;
 import primitives.*;
 import primitives.Color;
 import primitives.Point;
@@ -9,6 +10,7 @@ import java.awt.*;
 import java.util.LinkedList;
 import java.util.MissingResourceException;
 
+import static java.lang.Math.sqrt;
 import static java.lang.System.out;
 /**
  * Camera class represents the camera through which we see the scene.
@@ -56,7 +58,39 @@ public class Camera {
     private ImageWriter imageWriter;
 
     private RayTracerBase rayTracer;
+    /** Depth Of Filed properties. **/
 
+    /**
+     * A boolean variable that determines whether to use depth of filed.
+     */
+    private boolean depthOfFiled = false;
+
+    /** Aperture properties. **/
+
+    /**
+     * number with integer square for the matrix of points.
+     */
+    private int APERTURE_NUMBER_OF_POINTS = 100;
+
+    /**
+     * Declaring a variable called apertureSize of type double.
+     */
+    private double apertureSize;
+    /**
+     * Creating an array of Point objects.
+     */
+    private Point[] aperturePoints;
+    /**
+     * Declaring a variable called FOCAL_PLANE of type Plane.
+     */
+    /** Focal plane parameters. **/
+
+    /**
+     * as instructed it is a constant value of the class.
+     */
+    private double FP_distance;
+
+    private Plane FOCAL_PLANE;
     /**
      * Constructs an instance of Camera with point and to and up vectors.
      *
@@ -195,17 +229,22 @@ public class Camera {
 
 
     /**
-     * the method cast a ray through a pixel
+     * Given a pixel's coordinates, construct a ray and trace it through the scene
      *
-     * @param nX number of pixels on X axis in the view plane
-     * @param nY number of pixels on Y axis in the view plane
-     * @param j X coordinate of the pixel
-     * @param i Y coordinate of the pixel
-     * @return the color of the pixel
+     * @param nX The amount of columns (row width) of the pixel in the image.
+     * @param nY The amount of rows (column height) of the pixel in the image.
+     * @param j  The column of the pixel in the image.
+     * @param i  The row of the pixel in the image.
+     * @return The color of the pixel.
      */
     private Color castRay(int nX, int nY, int j, int i) {
-        return this.rayTracer.traceRay(this.constructRayThroughPixel(nX, nY, j, i));
+        Ray ray = this.constructRayThroughPixel(nX, nY, j, i);
+        if (depthOfFiled) // if there is the improvement of depth of filed
+            return averagedBeamColor(ray);
+
+        return this.rayTracer.traceRay(ray);
     }
+
 
     /**
      * Create a grid [over the picture] in the pixel color map. given the grid's
@@ -238,5 +277,86 @@ public class Camera {
             throw new MissingResourceException(RESOURCE, CAMERA, IMAGE_WRITER);
 
         imageWriter.writeToImage();
+    }
+    /** Depth Of Filed improvements **/
+
+    /**
+     * This function sets the depth of field to the value of the parameter.
+     *
+     * @param depthOfFiled If true, the camera will have a depth of field effect.
+     */
+    public Camera setDepthOfFiled(boolean depthOfFiled) {
+        this.depthOfFiled = depthOfFiled;
+        return this;
+    }
+    /**
+     * It takes a ray, finds the point where it intersects the focal plane, and then shoots rays from the aperture points
+     * to that point. It then averages the colors of all the rays
+     *
+     * @param ray The ray that is being traced.
+     * @return The average color of the image.
+     */
+    private Color averagedBeamColor(Ray ray) {
+        Color averageColor = Color.BLACK, apertureColor;
+        int numOfPoints = this.aperturePoints.length;
+        Ray apertureRay;
+        Point focalPoint = this.FOCAL_PLANE.findGeoIntersections(ray).get(0).point;
+        for (Point aperturePoint : this.aperturePoints) {
+            apertureRay = new Ray(aperturePoint, focalPoint.subtract(aperturePoint));
+            apertureColor = rayTracer.traceRay(apertureRay);
+            averageColor = averageColor.add(apertureColor.reduce(numOfPoints));
+        }
+        return averageColor;
+    }
+    /**
+     * The function sets the distance of the focal plane from the camera's position
+     *
+     * @param distance The distance from the camera to the focal plane.
+     * @return The camera itself.
+     */
+    public Camera setFPDistance(double distance) {
+        this.FP_distance = distance;
+        this.FOCAL_PLANE = new Plane(this.p0.add(this.vTo.scale(FP_distance)), this.vTo);
+        return this;
+    }
+    /**
+     * This function sets the aperture size of the camera and initializes the points of the aperture.
+     *
+     * @param size the size of the aperture.
+     * @return The camera object itself.
+     */
+    public Camera setApertureSize(double size) {
+        this.apertureSize = size;
+
+        //initializing the points of the aperture.
+        if (size != 0) initializeAperturePoint();
+
+        return this;
+    }
+    /**
+     * The function initializes the aperture points array by calculating the distance between the points and the initial
+     * point, and then initializing the array with the points
+     */
+    private void initializeAperturePoint() {
+        //the number of points in a row
+        int pointsInRow = (int) sqrt(this.APERTURE_NUMBER_OF_POINTS);
+
+        //the array of point saved as an array
+        this.aperturePoints = new Point[pointsInRow * pointsInRow];
+
+        //calculating the initial values.
+        double pointsDistance = (this.apertureSize * 2) / pointsInRow;
+        //calculate the initial point to be the point with coordinates outside the aperture in the down left point, so we won`t have to deal with illegal vectors.
+        Point initialPoint = this.p0
+                .add(this.vUp.scale(-this.apertureSize - pointsDistance / 2)
+                        .add(this.vRight.scale(-this.apertureSize - pointsDistance / 2)));
+
+        //initializing the points array
+        for (int i = 1; i <= pointsInRow; i++) {
+            for (int j = 1; j <= pointsInRow; j++) {
+                this.aperturePoints[(i - 1) + (j - 1) * pointsInRow] = initialPoint
+                        .add(this.vUp.scale(i * pointsDistance).add(this.vRight.scale(j * pointsDistance)));
+            }
+        }
     }
 }
