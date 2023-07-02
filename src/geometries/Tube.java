@@ -2,13 +2,14 @@ package geometries;
 
 import primitives.Point;
 import primitives.Ray;
-import primitives.Util;
 import primitives.Vector;
 
 import java.util.List;
+
 /**
  * The Tube class is a subclass of the RadialGeometry class and represents a 3D tube in space.
- @author hodaya zohar && shoham shervi
+ *
+ * @author hodaya zohar && shoham shervi
  */
 public class Tube extends RadialGeometry {
     /**
@@ -19,7 +20,7 @@ public class Tube extends RadialGeometry {
     /**
      * Creates a new Tube object with the specified radius and axis ray.
      *
-     * @param r        The radius of the tube.
+     * @param r       The radius of the tube.
      * @param axisRay The axis ray of the tube.
      */
     public Tube(double r, Ray axisRay) {

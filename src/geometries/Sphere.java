@@ -4,13 +4,15 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
 import static primitives.Util.alignZero;
 
 /**
  * The Sphere class is a subclass of the RadialGeometry class and represents a 3D sphere in space.
- @author hodaya zohar && shoham shervi
+ *
+ * @author hodaya zohar && shoham shervi
  */
 public class Sphere extends Geometry {
     final private Point center;
@@ -23,7 +25,7 @@ public class Sphere extends Geometry {
      * @param center point
      * @param radius radius of sphere
      */
-    public Sphere(Point center, double radius) {
+    public Sphere(double radius, Point center) {
         this.center = center;
         this.radius = radius;
         this.radiusSqr = radius * radius;

@@ -3,13 +3,10 @@ package renderer;
 import org.junit.jupiter.api.Test;
 import primitives.Color;
 
-
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * A class to test the image writer class.
  *
- *  @author hodaya zohar && shoham shervi
+ * @author hodaya zohar && shoham shervi
  */
 class ImageWriterTest {
 

@@ -7,8 +7,9 @@ import primitives.Vector;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static primitives.Util.isZero;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 /**
  * Unit tests for {@link Sphere} class
  *
@@ -23,10 +24,10 @@ class SphereTest {
     void testGetNormal() {
         // ============ Equivalence Partitions Tests =============
         //        //TC01: Test that the= normal is proper
-        Sphere sph = new Sphere(new Point(0, 0, 1), 1.0);
+        Sphere sph = new Sphere(1.0, new Point(0, 0, 1));
         assertEquals(new Vector(0, 0, 1), sph.getNormal(new Point(0, 0, 2)), "TC01: Wrong normal to sphere");
 
-        Sphere sp = new Sphere(new Point(0, 0, 0), 1);
+        Sphere sp = new Sphere(1, new Point(0, 0, 0));
         assertEquals(sp.getNormal(new Point(0, 0, 1)), new Vector(0, 0, 1), "TC01: Sphere.getNormal() gives wrong normal.");
     }
 
@@ -35,7 +36,7 @@ class SphereTest {
      */
     @Test
     void testFindIntersections() {
-        Sphere sphere = new Sphere(new Point(-3, 0, 0), 1);
+        Sphere sphere = new Sphere(1, new Point(-3, 0, 0));
         // ============ Equivalence Partitions Tests ==============
 
         // TC01: Ray does not intersect the sphere.

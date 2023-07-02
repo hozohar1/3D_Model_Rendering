@@ -10,7 +10,8 @@ import static primitives.Util.alignZero;
 
 /**
  * The Triangle class is a subclass of the Polygon class and represents a 3D triangle in space.
- @author hodaya zohar && shoham shervi
+ *
+ * @author hodaya zohar && shoham shervi
  */
 public class Triangle extends Polygon {
 

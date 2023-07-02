@@ -1,9 +1,13 @@
 package integration;
 
-import renderer.Camera;
-import geometries.*;
+import geometries.Intersectable;
+import geometries.Plane;
+import geometries.Sphere;
+import geometries.Triangle;
 import org.junit.jupiter.api.Test;
-import primitives.*;
+import primitives.Point;
+import primitives.Vector;
+import renderer.Camera;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -23,7 +27,7 @@ public class RayConstructionAndIntersectionTest {
                 .setViewPlaneDistance(1).setViewPlaneSize(3, 3);
 
         // TC01: Sphere, 2 intersection points
-        Sphere sp = new Sphere(new Point(0, 0, -3),1);
+        Sphere sp = new Sphere(1, new Point(0, 0, -3));
 
 
         assertEquals(2, intersectionPointCountThroughCamera(camera, sp), "TC01: Sphere, 2 intersection points test not working");
@@ -31,17 +35,17 @@ public class RayConstructionAndIntersectionTest {
         // TC02: Sphere, 18 intersection points
         camera = new Camera(new Point(0, 0, 0.5), new Vector(0, 0, -1), new Vector(0, 1, 0))
                 .setViewPlaneDistance(1).setViewPlaneSize(3, 3);
-        sp = new Sphere(new Point(0, 0, -2.5),2.5);
+        sp = new Sphere(2.5, new Point(0, 0, -2.5));
 
         assertEquals(18, intersectionPointCountThroughCamera(camera, sp), "TC02: Sphere, 18 intersection points test not working");
 
         // TC03: Sphere, 10 intersection points
-        sp = new Sphere(new Point(0, 0, -2),2);
+        sp = new Sphere(2, new Point(0, 0, -2));
 
         assertEquals(10, intersectionPointCountThroughCamera(camera, sp), "TC03: Sphere, 10 intersection points test not working");
 
         // TC04: Sphere, 0 intersection points
-        sp = new Sphere(new Point(0, 0, 1),0.5);
+        sp = new Sphere(0.5, new Point(0, 0, 1));
 
         assertEquals(0, intersectionPointCountThroughCamera(camera, sp), "TC04: Sphere, 0 intersection points test not working");
 
@@ -86,7 +90,7 @@ public class RayConstructionAndIntersectionTest {
         int sum = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                var tmp = intersectable.findIntersections(camera.constructRayThroughPixel(3, 3, j, i));
+                var tmp = intersectable.findIntersections(camera.constructRay(3, 3, j, i));
                 if (tmp != null)
                     sum += tmp.size();
             }

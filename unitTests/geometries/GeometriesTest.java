@@ -16,7 +16,7 @@ class GeometriesTest {
     @Test
     void testFindIntersections() {
         Triangle triangle = new Triangle(new Point(0.81486, 1.38087, 0), new Point(0.95156, 4.48537, 0), new Point(-0.88168, 4.58488, 0));
-        Sphere sphere = new Sphere(new Point(0, 0, 0.2), 1);
+        Sphere sphere = new Sphere(1, new Point(0, 0, 0.2));
         Plane plane = new Plane(new Point(-3.07591, -1.36608, 0), new Point(-1.58192, 4.18223, 0), new Point(-4.15138, 1.01425, -2.21357));
 
         // ============ Equivalence Partitions Tests ==============

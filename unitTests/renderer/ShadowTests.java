@@ -1,29 +1,36 @@
 package renderer;
 
+import geometries.Intersectable;
+import geometries.Sphere;
+import geometries.Triangle;
+import lighting.AmbientLight;
+import lighting.SpotLight;
 import org.junit.jupiter.api.Test;
-
-import static java.awt.Color.*;
-
-import geometries.*;
-import lighting.*;
 import primitives.*;
-import renderer.*;
 import scene.Scene;
 
-/** Testing basic shadows
- * @author Dan */
+import static java.awt.Color.BLUE;
+import static java.awt.Color.WHITE;
+
+/**
+ * Testing basic shadows
+ *
+ * @author Dan
+ */
 public class ShadowTests {
-    private Intersectable sphere     = new Sphere(new Point(0, 0, -200), 60d)                                         //
+    private Intersectable sphere = new Sphere(60d, new Point(0, 0, -200))                                         //
             .setEmission(new Color(BLUE))                                                                                  //
             .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30));
-    private Material      trMaterial = new Material().setKd(0.5).setKs(0.5).setShininess(30);
+    private Material trMaterial = new Material().setKd(0.5).setKs(0.5).setShininess(30);
 
-    private Scene         scene      = new Scene("Test scene");
-    private Camera        camera     = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0))   //
+    private Scene scene = new Scene("Test scene");
+    private Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0))   //
             .setViewPlaneSize(200, 200).setViewPlaneDistance(1000)                                                                       //
             .setRayTracer(new RayTracerBasic(scene));
 
-    /** Helper function for the tests in this module */
+    /**
+     * Helper function for the tests in this module
+     */
     void sphereTriangleHelper(String pictName, Triangle triangle, Point spotLocation) {
         scene.geometries.add(sphere, triangle.setEmission(new Color(BLUE)).setMaterial(trMaterial));
         scene.lights.add( //
@@ -34,7 +41,9 @@ public class ShadowTests {
                 .writeToImage();
     }
 
-    /** Produce a picture of a sphere and triangle with point light and shade */
+    /**
+     * Produce a picture of a sphere and triangle with point light and shade
+     */
     @Test
     public void sphereTriangleInitial() {
         sphereTriangleHelper("shadowSphereTriangleInitial", //
@@ -49,7 +58,7 @@ public class ShadowTests {
     public void sphereTriangleMove1() {
         sphereTriangleHelper("shadowSphereTriangleMove2", //
                 new Triangle(new Point(-62, -32, 0), new Point(-32, -62, 0), new Point(-60, -60, -4)), //
-        new Point(-100, -100, 200));
+                new Point(-100, -100, 200));
     }
 
     /**
@@ -59,10 +68,12 @@ public class ShadowTests {
     public void sphereTriangleMove2() {
         sphereTriangleHelper("shadowSphereTriangleMove1", //
                 new Triangle(new Point(-49, -19, 0), new Point(-19, -49, 0), new Point(-47, -47, -4)), //
-        new Point(-100, -100, 200));
+                new Point(-100, -100, 200));
     }
 
-    /** Sphere-Triangle shading - move spot closer */
+    /**
+     * Sphere-Triangle shading - move spot closer
+     */
     @Test
     public void sphereTriangleSpot1() {
         sphereTriangleHelper("shadowSphereTriangleSpot1", //
@@ -70,7 +81,9 @@ public class ShadowTests {
                 new Point(-88, -88, 120));
     }
 
-    /** Sphere-Triangle shading - move spot even more close */
+    /**
+     * Sphere-Triangle shading - move spot even more close
+     */
     @Test
     public void sphereTriangleSpot2() {
         sphereTriangleHelper("shadowSphereTriangleSpot2", //
@@ -78,8 +91,10 @@ public class ShadowTests {
                 new Point(-76, -76, 70));
     }
 
-    /** Produce a picture of  two triangles lighted by a spot light with a Sphere
-     * producing a shading */
+    /**
+     * Produce a picture of  two triangles lighted by a spot light with a Sphere
+     * producing a shading
+     */
     @Test
     public void trianglesSphere() {
         scene.setAmbientLight(new AmbientLight(new Color(WHITE), new Double3(0.15)));
@@ -90,7 +105,7 @@ public class ShadowTests {
                         .setMaterial(new Material().setKs(0.8).setShininess(60)), //
                 new Triangle(new Point(-150, -150, -115), new Point(-70, 70, -140), new Point(75, 75, -150)) //
                         .setMaterial(new Material().setKs(0.8).setShininess(60)), //
-                new Sphere(new Point(0, 0, -11), 30d) //
+                new Sphere(30d, new Point(0, 0, -11)) //
                         .setEmission(new Color(BLUE)) //
                         .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(30)) //
         );

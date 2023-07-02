@@ -6,9 +6,12 @@ package primitives;
  */
 
 public class Point {
-    /** The coordinates of the point. */
-   final Double3  xyz;
     public static final Point ZERO = new Point(0, 0, 0);
+    /**
+     * The coordinates of the point.
+     */
+    final Double3 xyz;
+
     /**
      * Constructs a new point with the specified coordinates.
      *
@@ -16,7 +19,7 @@ public class Point {
      * @param b the y-coordinate of the point
      * @param c the z-coordinate of the point
      */
-    public Point(double a,double b,double c) {
+    public Point(double a, double b, double c) {
         this.xyz = new Double3(a, b, c);
     }
 
@@ -25,8 +28,8 @@ public class Point {
      *
      * @param d the coordinates of the point
      */
-  protected Point(Double3 d) {
-this.xyz=d;
+    protected Point(Double3 d) {
+        this.xyz = d;
     }
 
     /**
@@ -40,9 +43,9 @@ this.xyz=d;
         if (obj == this) {
             return true;
         }
-        if(obj==null)
+        if (obj == null)
             return false;
-        if (!(obj instanceof Point )) {
+        if (!(obj instanceof Point)) {
             return false;
         }
         Point other = (Point) obj;
@@ -50,6 +53,7 @@ this.xyz=d;
         return this.xyz.equals(other.xyz);
         //return super.equals(obj);
     }
+
     /**
      * Returns a string representation of this point.
      *
@@ -68,8 +72,7 @@ this.xyz=d;
      * @param v the vector to add to this point
      * @return a new point that is the result of adding the specified vector to this point
      */
-    public  Point add(Vector v)
-    {
+    public Point add(Vector v) {
         return new Point(xyz.add(v.xyz));
     }
 
@@ -79,19 +82,18 @@ this.xyz=d;
      * @param p the point to subtract from this point
      * @return the vector that represents the difference between this point and the specified point
      */
-    public Vector subtract(Point p)
-    {
+    public Vector subtract(Point p) {
         Double3 newXyz = xyz.subtract(p.xyz);
         return new Vector(newXyz);
     }
+
     /**
      * Returns the distance between this point and the specified point.
      *
      * @param p the point to calculate the distance to
      * @return the distance between this point and the specified point
      */
-    public double distance( Point p)
-    {
+    public double distance(Point p) {
         return Math.sqrt(distanceSquared(p));
     }
 
@@ -101,18 +103,19 @@ this.xyz=d;
      * @param p the point to calculate the squared distance to
      * @return the squared distance between this point and the specified point
      */
-    public double distanceSquared(Point p)
-    {
-        return (((this.xyz.d1-p.xyz.d1)* (this.xyz.d1-p.xyz.d1))+ ((this.xyz.d2-p.xyz.d2)* (this.xyz.d2-p.xyz.d2))+ ((this.xyz.d3-p.xyz.d3)*( this.xyz.d3-p.xyz.d3)));
+    public double distanceSquared(Point p) {
+        return (((this.xyz.d1 - p.xyz.d1) * (this.xyz.d1 - p.xyz.d1)) + ((this.xyz.d2 - p.xyz.d2) * (this.xyz.d2 - p.xyz.d2)) + ((this.xyz.d3 - p.xyz.d3) * (this.xyz.d3 - p.xyz.d3)));
 
     }
 
     public double getX() {
         return this.xyz.d1;
     }
+
     public double getY() {
         return this.xyz.d2;
     }
+
     public double getZ() {
         return this.xyz.d3;
     }

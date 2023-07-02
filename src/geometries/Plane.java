@@ -6,10 +6,12 @@ import primitives.Vector;
 
 import java.util.List;
 
-import static primitives.Util.*;
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /**
  * The Plane class implements the Geometry interface and represents a 3D plane in space.
+ *
  * @author hodaya zohar && shoham shervi
  */
 public class Plane extends Geometry {

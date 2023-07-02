@@ -1,167 +1,134 @@
 package renderer;
 
+import primitives.*;
+import static primitives.Util.*;
+
+import renderer.PixelManager.Pixel;
+
+import java.util.MissingResourceException;
+import java.util.LinkedList;
 
 import geometries.Plane;
-import primitives.*;
-import primitives.Color;
-import primitives.Point;
 
-import java.awt.*;
-import java.util.LinkedList;
-import java.util.MissingResourceException;
-
-import static java.lang.Math.sqrt;
-import static java.lang.System.out;
 /**
- * Camera class represents the camera through which we see the scene.
- *  @author hodaya zohar && shoham shervi
+ * Class Camera is the class representing the camera (our point of view)
+ *
+ * @author hodaya
  */
+
 public class Camera {
+    private final Point cameraPoint;
+    private final Vector vRight, vUp, vTo;
+    private double height, width;
+    private double dis;
 
-    /**
-     * The point of view of the camera.
-     */
-    private Point p0;
+    private ImageWriter imgWriter;
+    private RayTracerBase rayTracerBase;
 
-    //The directions of the camera:
-    /**
-     * vUp - The "up" direction in the camera.
-     */
-    private Vector vUp;
+    /* DoF Ray Tracing Improvement, declarations */
+    private boolean dofFlag = false;
 
-    /**
-     * vTo - The "to" direction in the camera, where the scene is.
-     */
-    private Vector vTo;
+    private Plane focalPlane;
+    private double focalPlaneDis;
 
-    /**
-     * vRight - The "right" direction in the camera.
-     */
-    private Vector vRight;
-
-    // The attributes of the view plane:
-    /**
-     * The width of the view plane.
-     */
-    private double width;
-
-    /**
-     * The height of the view plane.
-     */
-    private double height;
-
-    /**
-     * The distance between the p0 and the view plane (in the direction of vTo).
-     */
-    private double distance;
-
-    private ImageWriter imageWriter;
-
-    private RayTracerBase rayTracer;
-    /** Depth Of Filed properties. **/
-
-    /**
-     * A boolean variable that determines whether to use depth of filed.
-     */
-    private boolean depthOfFiled = false;
-
-    /** Aperture properties. **/
-
-    /**
-     * number with integer square for the matrix of points.
-     */
-    private int APERTURE_NUMBER_OF_POINTS = 100;
-
-    /**
-     * Declaring a variable called apertureSize of type double.
-     */
-    private double apertureSize;
-    /**
-     * Creating an array of Point objects.
-     */
     private Point[] aperturePoints;
-    /**
-     * Declaring a variable called FOCAL_PLANE of type Plane.
-     */
-    /** Focal plane parameters. **/
+    private double apertureSize;
+
+    private int numOfPoints;
+
+    private int threadsCount = 0;
+    private double printInterval = 0;
+    private PixelManager pixelManager;
 
     /**
-     * as instructed it is a constant value of the class.
-     */
-    private double FP_distance;
-
-    private Plane FOCAL_PLANE;
-    /**
-     * Constructs an instance of Camera with point and to and up vectors.
+     * return the camera point (position)
      *
-     * @param p0  The point of view of the camera.
-     * @param vTo The "to" direction of the camera, where the scene is.
-     * @param vUp The "up" direction of the camera.
+     * @return cameraPoint
      */
-    public Camera(Point p0, Vector vTo, Vector vUp) {
-        if (!(vUp.dotProduct(vTo) == 0))
-            throw new IllegalArgumentException("vTo and vUp have to be orthogonal!!!");
-        this.p0 = p0;
-        this.vUp = vUp.normalize();
-        this.vTo = vTo.normalize();
-        this.vRight = vTo.crossProduct(vUp).normalize();
+    public Point getPoint() {
+        return cameraPoint;
     }
 
     /**
-     * get the width of the view plane
+     * return the vector vRight
      *
-     * @return The width from the view plane.
+     * @return vRight
      */
-    public double getWidth() {
-        return width;
+    public Vector getVRight() {
+        return vRight;
     }
 
     /**
-     * get the height of the view plane
+     * return the vector vUp
      *
-     * @return The height from the view plane.
+     * @return vUp
+     */
+    public Vector getVUp() {
+        return vUp;
+    }
+
+    /**
+     * return the vector vTo
+     *
+     * @return vTo
+     */
+    public Vector getVTo() {
+        return vTo;
+    }
+
+    /**
+     * return the view plane height
+     *
+     * @return height
      */
     public double getHeight() {
         return height;
     }
 
     /**
-     * get the distance from the p0 to the view plane
+     * return the view plane width
      *
-     * @return The distance from the p0 to the view plane.
+     * @return width
      */
-    public double getDistance() {
-        return distance;
+    public double getWidth() {
+        return width;
     }
 
     /**
-     * init the image writer
+     * return the view plane distance from the camera
      *
-     * @param imageWriter The imageWriter to set.
-     * @return The current instance (Builder pattern).
+     * @return dis
      */
-    public Camera setImageWriter(ImageWriter imageWriter) {
-        this.imageWriter = imageWriter;
-        return this;
+    public double getDis() {
+        return dis;
     }
 
     /**
-     * init the ray tracer
+     * constructor for camera by point ([osition) and 2 vectors (up+to)
      *
-     * @param rayTracer The rayTracer to set.
-     * @return The current instance (Builder pattern).
+     * @param p  point (position of the camera)
+     * @param vu vector up
+     * @param vt vector to
      */
-    public Camera setRayTracer(RayTracerBase rayTracer) {
-        this.rayTracer = rayTracer;
-        return this;
+    public Camera(Point p, Vector vt, Vector vu) {
+        // the vectors aren't orthogonal:
+        if (!isZero(vu.dotProduct(vt)))
+            throw new IllegalArgumentException();
+
+        cameraPoint = p;
+        vUp = vu.normalize();
+        vTo = vt.normalize();
+        vRight = vTo.crossProduct(vUp);
+
+        this.apertureSize = 0; // initialize DoF parameters.
     }
 
     /**
-     * init the view plane by the width and height
+     * set the view plane size
      *
-     * @param width  The number to set as the view plane's width.
-     * @param height The number to set as the view plane's height.
-     * @return The current instance (Builder pattern).
+     * @param width  of view plane
+     * @param height of view plane
+     * @return the camera
      */
     public Camera setViewPlaneSize(double width, double height) {
         this.width = width;
@@ -170,193 +137,257 @@ public class Camera {
     }
 
     /**
-     * init the distance of the view plane
+     * set the view plane distance from the camera
      *
-     * @param distance The number to set as the distance between the p0 and the view plane.
-     * @return The current instance (Builder pattern).
+     * @param distance between view plane and camera
+     * @return the camera
      */
     public Camera setViewPlaneDistance(double distance) {
-        this.distance = distance;
+        this.dis = distance;
         return this;
     }
 
     /**
-     * Creates a ray that goes through a given pixel
+     * set the image writer from the camera
      *
-     * @param nX number of pixels on X axis in the view plane
-     * @param nY number of pixels on Y axis in the view plane
-     * @param j  X coordinate of the pixel
-     * @param i  Y coordinate of the pixel
-     * @return The ray from the camera to the pixel
+     * @param imgWriter image writer
+     * @return the camera
      */
-    public Ray constructRayThroughPixel(int nX, int nY, int j, int i) {
-        Point imgCenter = p0.add(vTo.scale(distance));
-        double rY = height / nY, rX = width / nX;
-        double iY = -(i - (nY - 1d) / 2) * rY, jX = (j - (nX - 1d) / 2) * rX;
-        Point ijP = imgCenter;
-        if (jX != 0) ijP = ijP.add(vRight.scale(jX));
-        if (iY != 0) ijP = ijP.add(vUp.scale(iY));
-        Vector ijV = ijP.subtract(p0);
-        return new Ray(p0, ijV);
+    public Camera setImageWriter(ImageWriter imgWriter) {
+        this.imgWriter = imgWriter;
+        return this;
     }
 
-    private final String RESOURCE = "Renderer resource not set";
-    private final String CAMERA_CLASS = "Camera";
-    private final String IMAGE_WRITER = "Image writer";
-    private final String CAMERA = "Camera";
-    private final String RAY_TRACER = "Ray tracer";
+    /**
+     * set the ray tracer base from the camera
+     *
+     * @param rtb ray Tracer Base
+     * @return the camera
+     */
+    public Camera setRayTracer(RayTracerBase rtb) {
+        this.rayTracerBase = rtb;
+        return this;
+    }
+
+    public Camera setMultithreading(int threads) {
+        if (threads < 0)
+            throw new IllegalArgumentException("number of threads must not be negative");
+        threadsCount = threads;
+        return this;
+    }
+
+    public Camera setDebugPrint(double interval) {
+        if (interval < 0)
+            throw new IllegalArgumentException("print interval must not be negative");
+        printInterval = interval;
+        return this;
+    }
 
     /**
-     * the method check if all the fields are set
+     * create a ray through the center of the pixel
      *
-     * @return The current instance (Builder pattern).
+     * @param nX number of columns
+     * @param nY number of rows
+     * @param j  pixel's column
+     * @param i  pixel's row
+     * @return the ray we created
+     */
+    public Ray constructRay(int nX, int nY, int j, int i) {
+        // image center
+        Point pc = cameraPoint.add(vTo.scale(dis));
+        // ratio (pixel&height)
+        double rY = height / nY, rX = width / nX;
+        // pixel[i,j] center
+        double yI = -rY * (i - (nY - 1.0) / 2.0);
+        double xJ = rX * (j - (nX - 1.0) / 2.0);
+        Point pIJ = pc;
+        if (!isZero(xJ))
+            pIJ = pIJ.add(vRight.scale(xJ));
+        if (!isZero(yI))
+            pIJ = pIJ.add(vUp.scale(yI));
+
+        Vector vIJ = pIJ.subtract(cameraPoint);
+        return new Ray(cameraPoint, vIJ);
+
+    }
+
+    /**
+     * Calculate color of the pixel that in sight
+     *
+     * @param col column number in View Plane
+     * @param row row number in View Plane
+     */
+    private void castRay(int col, int row, int nx, int ny) {
+        Ray ray = constructRay(nx, ny, col, row);
+        imgWriter.writePixel(col, row, dofFlag ? averagedBeamColor(ray) : rayTracerBase.traceRay(ray));
+        pixelManager.pixelDone();
+    }
+
+    /**
+     * build for each pixel a ray and get it's color
+     *
+     * @return this camera
      */
     public Camera renderImage() {
-        if (imageWriter == null)
-            throw new MissingResourceException(RESOURCE, CAMERA_CLASS, IMAGE_WRITER);
-        if (p0 == null || vTo == null || vUp == null || vRight == null || width == 0 || height == 0 || distance == 0)
-            throw new MissingResourceException(RESOURCE, CAMERA_CLASS, CAMERA);
-        if (rayTracer == null)
-            throw new MissingResourceException(RESOURCE, CAMERA_CLASS, RAY_TRACER);
-
-        final int nX = imageWriter.getNx();
-        final int nY = imageWriter.getNy();
-        for (int i = 0; i < nY; ++i)
-            for (int j = 0; j < nX; ++j)
-                this.imageWriter.writePixel(j, i, castRay(nX, nY, j, i));
-        return this;
-    }
-
-
-    /**
-     * Given a pixel's coordinates, construct a ray and trace it through the scene
-     *
-     * @param nX The amount of columns (row width) of the pixel in the image.
-     * @param nY The amount of rows (column height) of the pixel in the image.
-     * @param j  The column of the pixel in the image.
-     * @param i  The row of the pixel in the image.
-     * @return The color of the pixel.
-     */
-    private Color castRay(int nX, int nY, int j, int i) {
-        Ray ray = this.constructRayThroughPixel(nX, nY, j, i);
-        if (depthOfFiled) // if there is the improvement of depth of filed
-            return averagedBeamColor(ray);
-
-        return this.rayTracer.traceRay(ray);
-    }
-
-
-    /**
-     * Create a grid [over the picture] in the pixel color map. given the grid's
-     * step and color.
-     *
-     * @param interval grid's interval
-     * @param color    grid's color
-     */
-    public void printGrid(int interval, Color color) {
-        if (imageWriter == null)
-            throw new MissingResourceException(RESOURCE, CAMERA_CLASS, IMAGE_WRITER);
-
-        final int nX = imageWriter.getNx();
-        final int nY = imageWriter.getNy();
-
-        for (int i = 0; i < nY; i++) {
-            for (int j = 0; j < nX; j++) {
-                if (i % interval == 0 || j % interval == 0) {
-                    imageWriter.writePixel(j, i, color);
-                }
+        if (cameraPoint == null || vRight == null || vUp == null || vTo == null || imgWriter == null
+                || rayTracerBase == null)
+            throw new MissingResourceException("missing filed in camera", "", "");
+        int nx = imgWriter.getNx();
+        int ny = imgWriter.getNy();
+        pixelManager = new PixelManager(ny, nx, printInterval);
+        if (threadsCount == 0)
+            for (int x = 0; x < nx; x++)
+                for (int y = 0; y < ny; y++)
+                    castRay(x, y, nx, ny);
+        else {
+            var threads = new LinkedList<Thread>(); // list of threads
+            while (threadsCount-- > 0) // add appropriate number of threads
+                threads.add(new Thread(() -> { // add a thread with its code
+                    Pixel pixel; // current pixel(row,col)
+                    // allocate pixel(row,col) in loop until there are no more pixels
+                    while ((pixel = pixelManager.nextPixel()) != null)
+                        // cast ray through pixel (and color it – inside castRay)
+                        castRay(pixel.col(), pixel.row(), nx, ny);
+                }));
+            // start all the threads
+            for (var thread : threads)
+                thread.start();
+            // wait until all the threads have finished
+            try {
+                for (var thread : threads)
+                    thread.join();
+            } catch (InterruptedException ignore) {
             }
         }
-    }
-
-    /**
-     * Produce a rendered image file
-     */
-    public void writeToImage() {
-        if (imageWriter == null)
-            throw new MissingResourceException(RESOURCE, CAMERA, IMAGE_WRITER);
-
-        imageWriter.writeToImage();
-    }
-    /** Depth Of Filed improvements **/
-
-    /**
-     * This function sets the depth of field to the value of the parameter.
-     *
-     * @param depthOfFiled If true, the camera will have a depth of field effect.
-     */
-    public Camera setDepthOfFiled(boolean depthOfFiled) {
-        this.depthOfFiled = depthOfFiled;
         return this;
     }
+
     /**
-     * It takes a ray, finds the point where it intersects the focal plane, and then shoots rays from the aperture points
-     * to that point. It then averages the colors of all the rays
+     * print a grid on the picture
      *
-     * @param ray The ray that is being traced.
-     * @return The average color of the image.
+     * @param interval the size of each square of the grid
+     * @param color    the grid color
+     * @return this camera
      */
-    private Color averagedBeamColor(Ray ray) {
-        Color averageColor = Color.BLACK, apertureColor;
-        int numOfPoints = this.aperturePoints.length;
-        Ray apertureRay;
-        Point focalPoint = this.FOCAL_PLANE.findGeoIntersections(ray).get(0).point;
-        for (Point aperturePoint : this.aperturePoints) {
-            apertureRay = new Ray(aperturePoint, focalPoint.subtract(aperturePoint));
-            apertureColor = rayTracer.traceRay(apertureRay);
-            averageColor = averageColor.add(apertureColor.reduce(numOfPoints));
+    public Camera printGrid(int interval, Color color) {
+        if (imgWriter == null)
+            throw new MissingResourceException("missing filed in camera", "", "");
+        int nx = imgWriter.getNx();
+        int ny = imgWriter.getNy();
+        for (int x = 0; x < nx; x++) {
+            for (int y = 0; y < ny; y++) {
+                if (x % interval == 0 || y % interval == 0)
+                    imgWriter.writePixel(x, y, color);
+            }
         }
-        return averageColor;
+        return this;
     }
+
     /**
-     * The function sets the distance of the focal plane from the camera's position
+     * creating the picture
+     */
+    public void writeToImage() {
+        if (imgWriter == null)
+            throw new MissingResourceException("missing filed in camera", "", "");
+        imgWriter.writeToImage();
+    }
+
+    /**
+     * setter of the depth of field flag (if using it or not)
+     *
+     * @param depthOfFiled If true, the camera will have a depth of field effect.
+     * @return The camera itself.
+     */
+    public Camera setDepthOfFiled(boolean depthOfFiled) {
+        dofFlag = depthOfFiled;
+        return this;
+    }
+
+    /**
+     * setter for the distance of the focal plane from the camera's position
      *
      * @param distance The distance from the camera to the focal plane.
      * @return The camera itself.
      */
     public Camera setFPDistance(double distance) {
-        this.FP_distance = distance;
-        this.FOCAL_PLANE = new Plane(this.p0.add(this.vTo.scale(FP_distance)), this.vTo);
+        focalPlaneDis = distance;
+        focalPlane = new Plane(cameraPoint.add(this.vTo.scale(focalPlaneDis)), vTo); // the focal plane is parallel to
+        // the view plane
         return this;
     }
+
     /**
-     * This function sets the aperture size of the camera and initializes the points of the aperture.
+     * settrer for the aperture size of the camera and initializing the points of
+     * the aperture.
      *
      * @param size the size of the aperture.
-     * @return The camera object itself.
+     * @return The camera itself.
      */
     public Camera setApertureSize(double size) {
-        this.apertureSize = size;
-
-        //initializing the points of the aperture.
-        if (size != 0) initializeAperturePoint();
+        apertureSize = size;
+        // initializing the points of the aperture.
+        if (size != 0)
+            initializeAperturePoint();
 
         return this;
     }
+
     /**
-     * The function initializes the aperture points array by calculating the distance between the points and the initial
-     * point, and then initializing the array with the points
+     * settrer for the aperture size number of points on the aperture.
+     *
+     * @param num the number of the points on the aperture.
+     * @return The camera itself.
+     */
+    public Camera setNumOfPoints(int num) {
+        numOfPoints = num;
+        return this;
+    }
+
+    /**
+     * initializing the aperture points array by calculating the distance between
+     * the points and the initial point, and then initializing the array with the
+     * points
      */
     private void initializeAperturePoint() {
-        //the number of points in a row
-        int pointsInRow = (int) sqrt(this.APERTURE_NUMBER_OF_POINTS);
 
-        //the array of point saved as an array
-        this.aperturePoints = new Point[pointsInRow * pointsInRow];
+        int pointsInRow = (int) Math.sqrt(numOfPoints);
 
-        //calculating the initial values.
-        double pointsDistance = (this.apertureSize * 2) / pointsInRow;
-        //calculate the initial point to be the point with coordinates outside the aperture in the down left point, so we won`t have to deal with illegal vectors.
-        Point initialPoint = this.p0
-                .add(this.vUp.scale(-this.apertureSize - pointsDistance / 2)
-                        .add(this.vRight.scale(-this.apertureSize - pointsDistance / 2)));
+        aperturePoints = new Point[pointsInRow * pointsInRow];
 
-        //initializing the points array
-        for (int i = 1; i <= pointsInRow; i++) {
-            for (int j = 1; j <= pointsInRow; j++) {
-                this.aperturePoints[(i - 1) + (j - 1) * pointsInRow] = initialPoint
-                        .add(this.vUp.scale(i * pointsDistance).add(this.vRight.scale(j * pointsDistance)));
+        double pointsDistance = (apertureSize * 2) / pointsInRow;
+        // calculate the initial point to be the point with coordinates outside the
+        // aperture in the down left point,
+        // so we won`t have to deal with illegal vectors.
+        double s = -(apertureSize + pointsDistance / 2);
+        Point initialPoint = cameraPoint.add(this.vUp.scale(s).add(this.vRight.scale(s)));
+
+        // initializing the points array
+        for (int i = 0; i < pointsInRow; i++) {
+            for (int j = 0; j < pointsInRow; j++) {
+                this.aperturePoints[i + j * pointsInRow] = initialPoint
+                        .add(this.vUp.scale((i + 1) * pointsDistance).add(this.vRight.scale((j + 1) * pointsDistance)));
             }
         }
     }
+
+    /**
+     * averaging the colors of all the rays that were shoot from the aperture points
+     * to the point where the ray intersects the focal plane.
+     *
+     * @param ray The ray that is being traced.
+     * @return The average color of the image.
+     */
+    private Color averagedBeamColor(Ray ray) {
+        Color averageColor = Color.BLACK;
+        Ray apertureRay;
+        Color apertureColor;
+        Point focalPoint = focalPlane.findGeoIntersections(ray).get(0).point;
+        for (Point aperturePoint : aperturePoints) {
+            apertureRay = new Ray(aperturePoint, focalPoint.subtract(aperturePoint));
+            apertureColor = rayTracerBase.traceRay(apertureRay);
+            averageColor = averageColor.add(apertureColor.reduce(numOfPoints));
+        }
+        return averageColor;
+    }
+
 }

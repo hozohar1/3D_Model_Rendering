@@ -4,7 +4,6 @@ import geometries.Intersectable.GeoPoint;
 import lighting.LightSource;
 import primitives.*;
 import scene.Scene;
-import geometries.Geometries;
 
 import java.util.List;
 
@@ -13,13 +12,13 @@ import static primitives.Util.isZero;
 
 /**
  * A basic implementation of a ray tracer class.
- *
+ * <p>
  * This class is responsible for tracing rays and calculating the color at intersection points
  * in a given scene.
- *
+ * <p>
  * The ray tracing algorithm includes handling of local and global effects such as shadows,
  * reflections, and refractions.
- *
+ * <p>
  * This implementation uses a basic algorithm without advanced optimization techniques.
  *
  * @author hodaya zohar && shoham shervi
@@ -158,11 +157,11 @@ public class RayTracerBasic extends RayTracerBase {
      * Calculates how shaded the point is by checking the transparency of the objects
      * between the point and the light source.
      *
-     * @param gp     The intersection point
-     * @param light  The light source
-     * @param l      The direction from the light to the point
-     * @param n      The normal from the object at the point
-     * @param nv     The dot product of n and v
+     * @param gp    The intersection point
+     * @param light The light source
+     * @param l     The direction from the light to the point
+     * @param n     The normal from the object at the point
+     * @param nv    The dot product of n and v
      * @return The transparency level at the point
      */
     private Double3 transparency(GeoPoint gp, LightSource light, Vector l, Vector n, double nv) {
@@ -272,6 +271,7 @@ public class RayTracerBasic extends RayTracerBase {
         }
         return true;
     }
+
     /**
      * Scans the ray and looks for the first point that cuts the ray
      *

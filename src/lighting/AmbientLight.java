@@ -2,12 +2,11 @@ package lighting;
 
 import primitives.Color;
 import primitives.Double3;
-import primitives.Point;
 
 /**
  * Ambient light source represents a non-directional, fixed-intensity and fixed-color light source.
  *
- *  @author hodaya zohar && shoham shervi
+ * @author hodaya zohar && shoham shervi
  */
 public class AmbientLight extends Light {
 
@@ -27,7 +26,7 @@ public class AmbientLight extends Light {
     /**
      * Constructs ambient light of complete darkness
      */
-    public AmbientLight(){
+    public AmbientLight() {
         super(Color.BLACK);
     }
 }

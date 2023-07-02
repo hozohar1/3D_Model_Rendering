@@ -2,7 +2,8 @@ package primitives;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Unit tests for {@link Point} class
@@ -10,10 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author hodaya zohar && shoham shervi
  */
 class PointTests {
-Point p=new Point(1,1,1);
+    Point p = new Point(1, 1, 1);
+
     /*
-    * Test method for {@link primitives.Point#add(primitives.Vector)}.
-            */
+     * Test method for {@link primitives.Point#add(primitives.Vector)}.
+     */
     @Test
     void testAdd() {
         // ============ Equivalence Partitions Tests ==============
@@ -25,8 +27,8 @@ Point p=new Point(1,1,1);
         // there are no boundary tests
     }
 
-  /* Test method for {@link primitives.Point#subtract(primitives.Point)}.
-            */
+    /* Test method for {@link primitives.Point#subtract(primitives.Point)}.
+     */
     @Test
     void testSubtract() {
         // ============ Equivalence Partitions Tests ==============
@@ -40,8 +42,8 @@ Point p=new Point(1,1,1);
                 "Subtract P from P must throw exception");
     }
 
-  /* Test method for {@link primitives.Point#distanceSquared(primitives.Point)}.
-            */
+    /* Test method for {@link primitives.Point#distanceSquared(primitives.Point)}.
+     */
     @Test
     void testDistanceSquared() {
         // ============ Equivalence Partitions Tests ==============
@@ -55,8 +57,8 @@ Point p=new Point(1,1,1);
                 "Wrong squared distance between the point and itself");
     }
 
-  /* Test method for {@link primitives.Point#distance(primitives.Point)}.
-            */
+    /* Test method for {@link primitives.Point#distance(primitives.Point)}.
+     */
     @Test
     void testDistance() {
         // ============ Equivalence Partitions Tests ==============
