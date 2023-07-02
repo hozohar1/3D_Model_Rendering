@@ -213,7 +213,6 @@ public class RayTracerBasic extends RayTracerBase {
         }
         return color;
     }
-
     /**
      * Calculates the specular component of the light at the given point.
      *
