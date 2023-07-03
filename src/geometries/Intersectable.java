@@ -25,7 +25,7 @@ public abstract class Intersectable {
     /**
      * class Border is a class that represents the box of the bvh
      *
-     * @author Efrat Wexler and Sari Zilberlicht
+     * @author hodaya
      *
      */
     public static class Border {
@@ -165,7 +165,7 @@ public abstract class Intersectable {
      * class GeoPoint is a class that represents an intersection of a geometry and
      * the point
      *
-     * @author Efrat Wexler and Sari Zilberlicht
+     * @author hodaya
      *
      */
     public static class GeoPoint {

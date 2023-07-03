@@ -50,11 +50,30 @@ public class Polygon extends Geometry {
         if (vertices.length < 3)
             throw new IllegalArgumentException("A polygon can't have less than 3 vertices");
         this.vertices = List.of(vertices);
+
+
         // Generate the plane according to the first three vertices and associate the
         // polygon with this plane.
         // The plane holds the invariant normal (orthogonal unit) vector to the polygon
         plane = new Plane(vertices[0], vertices[1], vertices[2]);
-        if (vertices.length == 3)
+        if (cbr) {
+            box = new Border();
+            for (var v : this.vertices) {
+                if (v.getX() < box.minX)
+                    box.minX = v.getX();
+                if (v.getY() < box.minY)
+                    box.minY = v.getY();
+                if (v.getZ() < box.minZ)
+                    box.minZ = v.getZ();
+                if (v.getX() > box.maxX)
+                    box.maxX = v.getX();
+                if (v.getY() > box.maxY)
+                    box.maxY = v.getY();
+                if (v.getZ() > box.maxZ)
+                    box.maxZ = v.getZ();
+            }
+        }
+        if (size == 3)
             return; // no need for more tests for a Triangle
 
         Vector n = plane.getNormal();
