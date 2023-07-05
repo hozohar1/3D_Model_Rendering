@@ -103,7 +103,7 @@ public class RenderTests {
     @Test
     void testDepthOfField() {
 
-        Scene scene = new Scene("Test scene").setCBR();
+        Scene scene = new Scene("Test scene");//.setCBR();
 
         // Create an array of spheres
         Geometry[] spheres = new Sphere[10];
@@ -144,7 +144,7 @@ public class RenderTests {
         scene.geometries.add(polygon);
         scene.lights.add(new DirectionalLight(new Color(800, 500, 0), new Vector(1.0, -1.0, -0.5)));
         scene.lights.add(new SpotLight(new Color(0, 255, 0), new Point(100.0, 100.0, 800.0), new Vector(-1.0, -1.0, 0.0)).setNarrowBeam(10));
-        scene.setBVH();
+        //scene.setBVH();
 
         ImageWriter imageWriter = new ImageWriter("lightSphereDirectionalDepthOfFieldTesting1", 500, 500);
         camera.setImageWriter(imageWriter)

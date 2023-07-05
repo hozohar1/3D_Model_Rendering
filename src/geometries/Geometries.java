@@ -11,7 +11,6 @@ import primitives.Ray;
  *
  * @author hodaya
  */
-
 public class Geometries extends Intersectable {
     private final List<Intersectable> geometries = new LinkedList<>();
     private final List<Intersectable> infinites = new LinkedList<>();
@@ -52,7 +51,7 @@ public class Geometries extends Intersectable {
             this.geometries.addAll(geometries);
             return;
         }
-
+        // edge of box
         for (var g : geometries) {
             if (g.box == null)
                 infinites.add(g);
@@ -108,6 +107,7 @@ public class Geometries extends Intersectable {
      * create the hierarchy and put into the right boxes
      */
     public void setBVH() {
+        // len of zir
         double x = box.maxX - box.minX;
         double y = box.maxY - box.minY;
         double z = box.maxZ - box.minZ;

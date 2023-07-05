@@ -25,7 +25,7 @@ public class Camera {
     private ImageWriter imgWriter;
     private RayTracerBase rayTracerBase;
 
-    /* DoF Ray Tracing Improvement, declarations */
+    /* DoF Improvement, declarations */
     private boolean dofFlag = false;
 
     private Plane focalPlane;
@@ -111,7 +111,7 @@ public class Camera {
      * @param vt vector to
      */
     public Camera(Point p, Vector vt, Vector vu) {
-        // the vectors aren't orthogonal:
+        // vec aren't orthogonal:
         if (!isZero(vu.dotProduct(vt)))
             throw new IllegalArgumentException();
 
@@ -164,8 +164,8 @@ public class Camera {
      * @param rtb ray Tracer Base
      * @return the camera
      */
-    public Camera setRayTracer(RayTracerBase rtb) {
-        this.rayTracerBase = rtb;
+    public Camera setRayTracer(RayTracerBase ray) {
+        this.rayTracerBase = ray;
         return this;
     }
 
@@ -261,7 +261,14 @@ public class Camera {
         }
         return this;
     }
-
+    /**
+     * creating the picture
+     */
+    public void writeToImage() {
+        if (imgWriter == null)
+            throw new MissingResourceException("missing filed in camera", "", "");
+        imgWriter.writeToImage();
+    }
     /**
      * print a grid on the picture
      *
@@ -283,17 +290,10 @@ public class Camera {
         return this;
     }
 
-    /**
-     * creating the picture
-     */
-    public void writeToImage() {
-        if (imgWriter == null)
-            throw new MissingResourceException("missing filed in camera", "", "");
-        imgWriter.writeToImage();
-    }
+
 
     /**
-     * setter of the depth of field flag (if using it or not)
+     * setter of the depth of field flag
      *
      * @param depthOfFiled If true, the camera will have a depth of field effect.
      * @return The camera itself.
@@ -353,15 +353,15 @@ public class Camera {
         int pointsInRow = (int) Math.sqrt(numOfPoints);
 
         aperturePoints = new Point[pointsInRow * pointsInRow];
-
+// dis betwwen points in aputre
         double pointsDistance = (apertureSize * 2) / pointsInRow;
         // calculate the initial point to be the point with coordinates outside the
-        // aperture in the down left point,
-        // so we won`t have to deal with illegal vectors.
-        double s = -(apertureSize + pointsDistance / 2);
-        Point initialPoint = cameraPoint.add(this.vUp.scale(s).add(this.vRight.scale(s)));
+        // aperture in the down left point,so we won`t have to deal with illegal vectors.
+        // p first point and then we move and find other points
+        double p = -(apertureSize + pointsDistance / 2);
+        Point initialPoint = cameraPoint.add(this.vUp.scale(p).add(this.vRight.scale(p)));
 
-        // initializing the points array
+        // initializing points in array
         for (int i = 0; i < pointsInRow; i++) {
             for (int j = 0; j < pointsInRow; j++) {
                 this.aperturePoints[i + j * pointsInRow] = initialPoint
@@ -383,8 +383,11 @@ public class Camera {
         Color apertureColor;
         Point focalPoint = focalPlane.findGeoIntersections(ray).get(0).point;
         for (Point aperturePoint : aperturePoints) {
+            // creatr ray from aputre to focal plane vector
             apertureRay = new Ray(aperturePoint, focalPoint.subtract(aperturePoint));
+            // find the color of the ray
             apertureColor = rayTracerBase.traceRay(apertureRay);
+            // add coordinate of aptutecolor
             averageColor = averageColor.add(apertureColor.reduce(numOfPoints));
         }
         return averageColor;

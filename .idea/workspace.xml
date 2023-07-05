@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e26e8a0f-60e9-4047-bcea-bb7707a3f8d6" name="Changes" comment="//m">
+    <list default="true" id="e26e8a0f-60e9-4047-bcea-bb7707a3f8d6" name="Changes" comment="//mp">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Polygon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Polygon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Sphere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Sphere.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unitTests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/RenderTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +95,7 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.RenderTests.testDepthOfField">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.Main" />
       <module name="ISE5783_9287_4780" />
@@ -310,7 +306,9 @@
       <workItem from="1687902619672" duration="872000" />
       <workItem from="1688312853770" duration="6284000" />
       <workItem from="1688382853102" duration="2598000" />
-      <workItem from="1688387174366" duration="1193000" />
+      <workItem from="1688387174366" duration="1326000" />
+      <workItem from="1688478364196" duration="4585000" />
+      <workItem from="1688565710247" duration="7218000" />
     </task>
     <task id="LOCAL‎-00001" summary="Initial commit">
       <created>1677766807530</created>
@@ -578,7 +576,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1688313002778</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL‎-00039" summary="//mp">
+      <created>1688395062317</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL‎-00039" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1688395062318</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -597,7 +602,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="///" />
     <MESSAGE value="///names" />
     <MESSAGE value="///nothing 22" />
     <MESSAGE value="///LEVEL 2" />
@@ -622,7 +626,8 @@
     <MESSAGE value="//o" />
     <MESSAGE value="//pr09" />
     <MESSAGE value="//m" />
-    <option name="LAST_COMMIT_MESSAGE" value="//m" />
+    <MESSAGE value="//mp" />
+    <option name="LAST_COMMIT_MESSAGE" value="//mp" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
