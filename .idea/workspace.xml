@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e26e8a0f-60e9-4047-bcea-bb7707a3f8d6" name="Changes" comment="//mp">
+    <list default="true" id="e26e8a0f-60e9-4047-bcea-bb7707a3f8d6" name="Changes" comment="//11">
+      <change afterPath="$PROJECT_DIR$/src/scene/SceneBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xml/XML.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xml/basicRenderTestTwoColors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Polygon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Polygon.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unitTests/renderer/CameraTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/CameraTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unitTests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/RenderTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,6 +73,7 @@
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
@@ -87,6 +94,7 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\97250\IdeaProjects\Desktop\ISE5783_9287_4780\XML" />
       <recent name="C:\Users\97250\IdeaProjects\Desktop\ISE5783_9287_4780\src\renderer" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
@@ -95,7 +103,7 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RenderTests.testDepthOfField">
+  <component name="RunManager" selected="JUnit.All in ISE5783_9287_4780">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.Main" />
       <module name="ISE5783_9287_4780" />
@@ -133,22 +141,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReflectionRefractionTests.manyShapes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9287_4780" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="renderer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.ReflectionRefractionTests" />
-      <option name="METHOD_NAME" value="manyShapes" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ReflectionRefractionTests.xx" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9287_4780" />
       <extension name="coverage">
@@ -176,6 +168,22 @@
       <option name="PACKAGE_NAME" value="renderer" />
       <option name="MAIN_CLASS_NAME" value="renderer.ReflectionRefractionTests" />
       <option name="METHOD_NAME" value="zz" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RenderTests.basicRenderXml" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9287_4780" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="renderer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.RenderTests" />
+      <option name="METHOD_NAME" value="basicRenderXml" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -215,11 +223,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RenderTests.basicRenderXml" />
         <item itemvalue="JUnit.RenderTests.testDepthOfField" />
         <item itemvalue="JUnit.ReflectionRefractionTests.zz" />
         <item itemvalue="JUnit.ReflectionRefractionTests.xx" />
         <item itemvalue="JUnit.ReflectionRefractionTests.depthOfFieldScene" />
-        <item itemvalue="JUnit.ReflectionRefractionTests.manyShapes" />
       </list>
     </recent_temporary>
   </component>
@@ -308,7 +316,8 @@
       <workItem from="1688382853102" duration="2598000" />
       <workItem from="1688387174366" duration="1326000" />
       <workItem from="1688478364196" duration="4585000" />
-      <workItem from="1688565710247" duration="7218000" />
+      <workItem from="1688565710247" duration="14004000" />
+      <workItem from="1688726563884" duration="2615000" />
     </task>
     <task id="LOCAL‎-00001" summary="Initial commit">
       <created>1677766807530</created>
@@ -583,7 +592,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1688395062318</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL‎-00040" summary="//11">
+      <created>1688574076358</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL‎-00040" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1688574076358</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,7 +618,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="///names" />
     <MESSAGE value="///nothing 22" />
     <MESSAGE value="///LEVEL 2" />
     <MESSAGE value="///LEVEL 2.." />
@@ -627,7 +642,19 @@
     <MESSAGE value="//pr09" />
     <MESSAGE value="//m" />
     <MESSAGE value="//mp" />
-    <option name="LAST_COMMIT_MESSAGE" value="//mp" />
+    <MESSAGE value="//11" />
+    <option name="LAST_COMMIT_MESSAGE" value="//11" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/unitTests/renderer/RenderTests.java</url>
+          <line>134</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

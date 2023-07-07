@@ -161,7 +161,7 @@ public class Camera {
     /**
      * set the ray tracer base from the camera
      *
-     * @param rtb ray Tracer Base
+     * @param ray ray Tracer Base
      * @return the camera
      */
     public Camera setRayTracer(RayTracerBase ray) {
@@ -361,7 +361,7 @@ public class Camera {
         double p = -(apertureSize + pointsDistance / 2);
         Point initialPoint = cameraPoint.add(this.vUp.scale(p).add(this.vRight.scale(p)));
 
-        // initializing points in array
+        // initializing points array
         for (int i = 0; i < pointsInRow; i++) {
             for (int j = 0; j < pointsInRow; j++) {
                 this.aperturePoints[i + j * pointsInRow] = initialPoint

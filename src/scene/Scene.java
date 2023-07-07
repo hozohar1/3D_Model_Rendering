@@ -118,4 +118,14 @@ public class Scene {
         geometries.setBVH();
         return this;
     }
+//    /**
+//     * the function parse xml file into scene object
+//     *
+//     * @param path of the xml files
+//     * @return the object itself
+//
+//     */
+//    public Scene setXml(String path) {
+//        return this;
+//    }
 }
