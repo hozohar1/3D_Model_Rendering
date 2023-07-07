@@ -75,7 +75,6 @@ public class Camera {
     public Vector getVTo() {
         return vTo;
     }
-
     /**
      * return the view plane height
      *
