@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e26e8a0f-60e9-4047-bcea-bb7707a3f8d6" name="Changes" comment="//11">
-      <change afterPath="$PROJECT_DIR$/src/scene/SceneBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xml/XML.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xml/basicRenderTestTwoColors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="e26e8a0f-60e9-4047-bcea-bb7707a3f8d6" name="Changes" comment="//ii">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Polygon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ISE5783_9287_4780/geometries/Polygon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/renderer/CameraTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/CameraTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unitTests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unitTests/renderer/RenderTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -317,7 +308,8 @@
       <workItem from="1688387174366" duration="1326000" />
       <workItem from="1688478364196" duration="4585000" />
       <workItem from="1688565710247" duration="14004000" />
-      <workItem from="1688726563884" duration="2615000" />
+      <workItem from="1688726563884" duration="3057000" />
+      <workItem from="1692624577477" duration="2874000" />
     </task>
     <task id="LOCAL‎-00001" summary="Initial commit">
       <created>1677766807530</created>
@@ -599,7 +591,21 @@
       <option name="project" value="LOCAL‎" />
       <updated>1688574076358</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL‎-00041" summary="//11">
+      <created>1688731248664</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL‎-00041" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1688731248679</updated>
+    </task>
+    <task id="LOCAL‎-00042" summary="//ii">
+      <created>1688731375682</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL‎-00042" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1688731375682</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -618,7 +624,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="///nothing 22" />
     <MESSAGE value="///LEVEL 2" />
     <MESSAGE value="///LEVEL 2.." />
     <MESSAGE value="///ZOOM" />
@@ -643,7 +648,8 @@
     <MESSAGE value="//m" />
     <MESSAGE value="//mp" />
     <MESSAGE value="//11" />
-    <option name="LAST_COMMIT_MESSAGE" value="//11" />
+    <MESSAGE value="//ii" />
+    <option name="LAST_COMMIT_MESSAGE" value="//ii" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
