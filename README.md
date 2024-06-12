@@ -7,6 +7,7 @@ engineering, such as agile methodologies, object-oriented
 programming (OOP), and design patterns.
 (ISE5783_9287_4780)
 # Examples of photos:
+![lightSphereDirectionalDepthOfFieldTesting1](https://github.com/hozohar1/3D_Model_Rendering/assets/116975069/d7642a59-0870-4d00-8c71-157ea3891d63)
 ![shadowTrianglesSphere](https://github.com/hozohar1/3D_Model_Rendering/assets/116975069/e7f8870a-aaa2-4f62-9d3b-00e6b69fc6aa)
 ![lightSphereDirectional](https://github.com/hozohar1/3D_Model_Rendering/assets/116975069/92278756-45f2-4579-9f0b-d9c5a2f9f305)
 ![xx](https://github.com/hozohar1/3D_Model_Rendering/assets/116975069/247ce792-f751-4cb6-bcf0-9fe7f6c57c91)
